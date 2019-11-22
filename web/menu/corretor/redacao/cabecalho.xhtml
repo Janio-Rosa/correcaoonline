@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core"
+              xmlns:pou="http://primefaces.org/ui">
+    <h:panelGrid  columns="1" style="width:100%;" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao}" >
+        <p:messages id="messages" showDetail="true" rendered="#{CorrecaoController.candidatoAtual.flDiscrepancia or CorrecaoController.candidatoAtual.flAtendimentoEspecial}"  />
+    </h:panelGrid>    
+    <h:panelGrid  columns="3" cellpadding="4" cellspacing="0" styleClass="pnlCabecalhoCorrecao" columnClasses="pnlCabecalhoCorrecaoCol1,pnlCabecalhoCorrecaoCol2" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao}" >
+        <h:panelGrid columns="10" cellpadding="10" cellspacing="0" >
+
+            <h:panelGrid  columns="2" cellpadding="2" cellspacing="0">
+                <h:outputLabel styleClass="lblBoldLaranjaPequeno" value="Corretor: "/>
+                <h:outputLabel styleClass="lblBoldPequenoVermelho" value="#{CorrecaoController.colaborador.nrCpf.nmPessoa}"/>
+            </h:panelGrid>
+            <h:panelGrid  columns="2" cellpadding="2" cellspacing="0">
+                <h:outputLabel styleClass="lblBoldLaranjaPequeno" value="#{CorrecaoController.colaborador.idBanca.idDisciplina.nmDisciplina}: "/>
+                <h:outputLabel styleClass="lblBoldPequenoVermelho" value="#{CorrecaoController.colaborador.idTipoCorrecao.nmTipoCorrecao}"/>
+            </h:panelGrid>
+            <h:panelGrid  columns="2" cellpadding="2" cellspacing="0">
+                <h:outputLabel styleClass="lblBoldLaranjaPequeno" value="Processo Seletivo: "/>
+                <h:outputLabel styleClass="lblBoldPequenoVermelho" value="#{CorrecaoController.colaborador.idProcesso.nmProcesso}"/>
+            </h:panelGrid>
+            <h:panelGrid  columns="1" cellpadding="2" cellspacing="0">
+                <h:panelGroup  style="width:200px;" >
+                    <h:outputLabel styleClass="lblBegePequeno" value="Gênero:"/>
+                    <h:selectOneMenu value="#{CriterioController.generoSelecionado.idGeneroCategoria}" label="Gênero" title="Clique aqui para mudar o gênero"  id="cboGeneroRedacao" styleClass="lblBoldAzulMedioParaComboBox" >
+                        <f:selectItem itemValue="" itemLabel="Selecione um gênero"/>
+                        <f:selectItems value="#{CriterioController.listaGeneros}" var="atual" itemValue="#{atual.idGeneroCategoria}" itemLabel="#{atual.nmGeneroCategoria} "/>
+                        <f:ajax event="change" execute="@this" render="pnlCategoriaCriterio pnlCriterios pnlGeneroSelecionado" listener="#{CriterioController.atualizaGenero()}" />
+                    </h:selectOneMenu>
+                </h:panelGroup>
+            </h:panelGrid>
+
+        </h:panelGrid>
+        <h:panelGrid columns="1" cellpadding="10" cellspacing="0" >
+
+            <p:commandButton value="Sair" action="#{Usuario.doExit}" ajax="false" type="submit" onclick="return confirm('A análise atual será interrompida. Deseja sair do sistema?');" />
+
+        </h:panelGrid>
+    </h:panelGrid>
+</h:panelGroup>

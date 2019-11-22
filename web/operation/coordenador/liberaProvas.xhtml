@@ -1,0 +1,68 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.prime.com.tr/ui">
+
+    <h:panelGrid columns="2">
+        <h:outputLabel styleClass="lblBoldAzul" value="#{LiberacaoProva.mensagemAviso}" id="lblMensagemAvisoLiberacao"/>
+    </h:panelGrid>
+
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Selecione a disciplina: "/>
+        <h:selectOneMenu value="#{LiberacaoProva.idDisciplinaSelecionada}" required="true" requiredMessage="E preciso selecionar uma DISCIPLINA, antes." id="cboSelecionaDisciplina" >
+            <f:selectItem itemLabel="--- Selecione uma disciplina ---" itemValue=""/>
+            <f:selectItems value="#{Disciplina.listaDisciplinas}" var="disciplinaAtual" itemValue="#{disciplinaAtual.idDisciplina}" itemLabel="#{disciplinaAtual.nmDisciplina}"/>
+        </h:selectOneMenu>
+        <h:message styleClass="lblBoldPequenoVermelho"  for="cboSelecionaDisciplina"/>
+    </h:panelGrid>
+
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Selecione a questao: "/>
+        <h:selectOneMenu  value="#{LiberacaoProva.nrQuestaoSelecionada}" required="true" requiredMessage="E preciso selecionar uma QUESTAO, antes." id="cboSelecionaQuestao" >
+            <f:selectItem itemLabel="--- Selecione uma questão ---" itemValue="0"/>
+            <f:selectItem itemLabel=" Questão 1 " itemValue="1"/>
+            <f:selectItem itemLabel=" Questão 2 " itemValue="2"/>
+            <f:selectItem itemLabel=" Questão 3 " itemValue="3"/>
+            <f:selectItem itemLabel=" Questão 4 " itemValue="4"/>
+            <f:selectItem itemLabel=" Questão 5 " itemValue="5"/>
+        </h:selectOneMenu>
+        <h:message styleClass="lblBoldPequenoVermelho"  for="cboSelecionaQuestao"/>
+    </h:panelGrid>
+
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Provas pendentes (1ª Correçao):  "/>
+        <h:outputLabel value="#{LiberacaoProva.quantProvasPendentesPrimeiraCorrecao}" id="lblProvasPendentes1aCorrecao" styleClass="lblBoldAzul" />
+        <h:outputLabel value="Provas pendentes (2ª Correçao):  "/>
+        <h:outputLabel value="#{LiberacaoProva.quantProvasPendentesSegundaCorrecao}" id="lblProvasPendentes2aCorrecao" styleClass="lblBoldAzul"/>
+        <h:outputLabel value="Provas pendentes (3ª Correçao):  "/>
+        <h:outputLabel value="#{LiberacaoProva.quantProvasPendentesTerceiraCorrecao}" id="lblProvasPendentes3aCorrecao" styleClass="lblBoldAzul"/>
+    </h:panelGrid>
+
+    <h:panelGrid columns="1">
+        <!--h:commandButton value="Consultar pendencias" action="{LiberacaoProva.consultaPendencias()}">
+            <f:ajax event="click" execute="@this" render="lblProvasPendentes1aCorrecao lblProvasPendentes2aCorrecao lblProvasPendentes3aCorrecao lblMensagemAvisoLiberacao"/>
+        </h:commandButton-->
+        <p:commandButton value="Consultar Provas Pendentes" action="#{LiberacaoProva.consultaPendencias()}" ajax="true" title="Clique aqui para consultar a quantidade de provas pendentes."
+                         update="lblProvasPendentes1aCorrecao lblProvasPendentes2aCorrecao lblProvasPendentes3aCorrecao lblMensagemAvisoLiberacao pnlBotoesLiberacao "  />
+    </h:panelGrid>
+    <h:panelGrid columns="1" id="pnlBotoesLiberacao">
+        <!--h:commandButton value="Libera provas 1ª Correçao" action="{LiberacaoProva.liberaPendenciasPrimeiraCorrecao()}">
+            <f:ajax event="click" execute="@this" render="lblProvasPendentes1aCorrecao lblMensagemAvisoLiberacao"/>
+        </h:commandButton>
+        <h:commandButton value="Libera provas 2ª Correçao" action="{LiberacaoProva.liberaPendenciasSegundaCorrecao()}">
+            <f:ajax event="click" execute="@this" render="lblProvasPendentes2aCorrecao lblMensagemAvisoLiberacao"/>
+        </h:commandButton>
+        <h:commandButton value="Libera provas 3ª Correçao" action="{LiberacaoProva.liberaPendenciasTerceiraCorrecao()}">
+            <f:ajax event="click" execute="@this" render="lblProvasPendentes3aCorrecao lblMensagemAvisoLiberacao"/>
+        </h:commandButton-->
+
+        <p:commandButton value="Libera provas 1ª Correçao" action="#{LiberacaoProva.liberaPendenciasPrimeiraCorrecao()}" ajax="true" update="lblProvasPendentes1aCorrecao lblProvasPendentes2aCorrecao lblProvasPendentes3aCorrecao lblMensagemAvisoLiberacao" 
+                         title="Clique aqui para liberar a PRIMEIRA correçao." rendered="#{LiberacaoProva.liberarAcaoAtualizacaoPrimeiraCorrecao}" id="btnLiberarPrimeiraCorrecao" />
+        <p:commandButton value="Libera provas 2ª Correçao" action="#{LiberacaoProva.liberaPendenciasSegundaCorrecao()}" ajax="true" update="lblProvasPendentes1aCorrecao lblProvasPendentes2aCorrecao lblProvasPendentes3aCorrecao lblMensagemAvisoLiberacao"  
+                         title="Clique aqui para liberar a SEGUNDA correçao." rendered="#{LiberacaoProva.liberarAcaoAtualizacaoSegundaCorrecao}" id="btnLiberarSegundaCorrecao"/>
+        <p:commandButton value="Libera provas 3ª Correçao" action="#{LiberacaoProva.liberaPendenciasTerceiraCorrecao()}" ajax="true" update="lblProvasPendentes1aCorrecao lblProvasPendentes2aCorrecao lblProvasPendentes3aCorrecao lblMensagemAvisoLiberacao"  
+                         title="Clique aqui para liberar a TERCEIRA correçao." rendered="#{LiberacaoProva.liberarAcaoAtualizacaoTerceiraCorrecao}" id="btnLiberarTerceiraCorrecao"/>
+
+    </h:panelGrid>
+
+</h:panelGroup>

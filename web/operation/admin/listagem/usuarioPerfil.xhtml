@@ -1,0 +1,28 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Perfil dos Usuários Cadastrados :"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{UsuarioPerfil.gridUsuarioPerfil}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel" columnClasses="TituloTabela1"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Nome: "/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmPessoa}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Usuário: "/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmUsuario}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Perfil: "/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmPerfil}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Excluir: "/></f:facet>
+                <h:commandLink value="Excluir" action="#{UsuarioPerfil.excluirUsuarioPerfil()}"  onclick="return confirm('Deseja excluir o perfil do usuário #{atual.nmUsuario} ?');" />
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

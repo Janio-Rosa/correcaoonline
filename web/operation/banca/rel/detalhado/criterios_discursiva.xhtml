@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core" >
+
+    <h:panelGrid columns="2" cellpadding="4" cellspacing="4" >
+        <h:outputLabel value="Nota: " styleClass="lblBoldAzul" escape="false" />
+        <h:outputLabel value="#{RelatorioDetalhado.correcaoSelecionada.nrNotaFinal}" styleClass="lblBoldVermelhoMedio" >
+            <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+        </h:outputLabel>
+    </h:panelGrid>
+    <h:panelGrid columns="3" cellpadding="4" cellspacing="4" >
+        <h:dataTable value="#{RelatorioDetalhado.listaCorrecao}" var="corAtual" border="0" cellpadding="2" cellspacing="2" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel"   >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Correção:"/></f:facet>
+                <h:outputLabel value="#{corAtual.idTipoCorrecao.nmTipoCorrecao} " styleClass="lblBoldLaranjaPequeno" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Corretor:"/></f:facet>
+                <h:outputLabel value="#{corAtual.idColaborador.nrCpf.nmPessoa}" styleClass="lblBoldAzul"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Nota:"/></f:facet>
+                <h:outputLabel value="#{corAtual.nrNota}" styleClass="lblBoldPequenoVermelho" >
+                    <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+                </h:outputLabel>
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+    <h:panelGrid columns="4" cellpadding="4" cellspacing="4" border="1" >
+        <h:dataTable value="#{RelatorioDetalhado.listaCorrecaoCriterio}" var="corCriAtual" border="0" cellpadding="2" cellspacing="2" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel"   >
+
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Gabarito:"/></f:facet>
+                <h:outputLabel value="#{corCriAtual.idCriterio.dsCriterio}. " styleClass="lblBoldPequenoVermelho" escape="false" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Corretor:"/></f:facet>
+                <h:outputLabel value="#{corCriAtual.idCorrecao.idColaborador.nrCpf.nmPessoa}: " styleClass="lblBoldAzulPequeno" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Correção:"/></f:facet>
+                <h:outputLabel value="#{corCriAtual.idCorrecao.idTipoCorrecao.nmTipoCorrecao}: " styleClass="lblBoldAzulPequeno" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Pontuação:"/></f:facet>
+                <h:outputLabel value="#{corCriAtual.nrValor}" styleClass="lblBoldPequenoVermelho" >
+                    <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+                </h:outputLabel>
+            </h:column>
+        </h:dataTable>            
+    </h:panelGrid>
+</h:panelGroup>

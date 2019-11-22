@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao}">
+    <h:panelGrid columns="1"></h:panelGrid><h:panelGrid columns="1"></h:panelGrid>
+    <h:panelGrid columns="1"></h:panelGrid><h:panelGrid columns="1"></h:panelGrid><h:panelGrid columns="1"></h:panelGrid><h:panelGrid columns="1"></h:panelGrid>
+    <h:panelGrid columns="1"></h:panelGrid><!--h:panelGrid columns="1"></h:panelGrid><h:panelGrid columns="1"></h:panelGrid><h:panelGrid columns="1"></h:panelGrid-->
+    <h:panelGrid columns="1"></h:panelGrid><h:panelGrid columns="1"></h:panelGrid>
+    <h:panelGrid columns="1"></h:panelGrid>
+
+    <h:panelGrid columns="1" id="pnlLinhasRedacao">
+        <ui:repeat value="#{CorrecaoController.listaLinhas}" var="linhaAtual" >
+            <!--h:commandButton styleClass="lblBotaoLinhas2"  value="{linhaAtual.nrLinha}" action="{CorrecaoController.mudaLinha()}">
+                <f:setPropertyActionListener target="{CorrecaoController.correcaoCriterioAtual.nrLinha}" value="{linhaAtual.nrLinha}"/>
+            </h:commandButton-->
+            <!-- oncomplete="destacaImagem({linhaAtual.nrLinha * 21.8});"  -->
+            <p:commandButton styleClass="lblBotaoLinhas2" value="#{linhaAtual.nrLinha}" update="pnlCriterios pnlLinhasRedacao" actionListener="#{CorrecaoController.mudaLinha()}" async="false" ajax="true" rendered="#{!(linhaAtual.nrLinha eq CorrecaoController.linhaSelecionada) and (!linhaAtual.bolPossuiMarcacao)}" >
+                <f:setPropertyActionListener target="#{CorrecaoController.correcaoCriterioAtual.nrLinha}" value="#{linhaAtual.nrLinha}"/>
+                <f:setPropertyActionListener target="#{CorrecaoController.linhaSelecionada}" value="#{linhaAtual.nrLinha}"/>
+            </p:commandButton>
+            <p:commandButton styleClass="lblBotaoLinhasMarcacao" value="#{linhaAtual.nrLinha}" update="pnlCriterios pnlLinhasRedacao" actionListener="#{CorrecaoController.mudaLinha()}" async="false" ajax="true" rendered="#{!(linhaAtual.nrLinha eq CorrecaoController.linhaSelecionada) and (linhaAtual.bolPossuiMarcacao)}" >
+                <f:setPropertyActionListener target="#{CorrecaoController.correcaoCriterioAtual.nrLinha}" value="#{linhaAtual.nrLinha}"/>
+                <f:setPropertyActionListener target="#{CorrecaoController.linhaSelecionada}" value="#{linhaAtual.nrLinha}"/>
+            </p:commandButton>
+            <p:commandButton styleClass="lblBotaoLinhasSelecionada" value="#{linhaAtual.nrLinha}" update="pnlCriterios pnlLinhasRedacao" actionListener="#{CorrecaoController.mudaLinha()}" async="false" ajax="true" rendered="#{linhaAtual.nrLinha eq CorrecaoController.linhaSelecionada}" >
+                <f:setPropertyActionListener target="#{CorrecaoController.correcaoCriterioAtual.nrLinha}" value="#{linhaAtual.nrLinha}"/>
+                <f:setPropertyActionListener target="#{CorrecaoController.linhaSelecionada}" value="#{linhaAtual.nrLinha}"/>
+            </p:commandButton>
+        </ui:repeat>
+    </h:panelGrid>
+</h:panelGroup>

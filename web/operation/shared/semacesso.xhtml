@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.prime.com.tr/ui">
+
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <h:outputScript library="js" name="form.js" target="head" />
+    <h:form prependId="false" rendered="#{CorrecaoController.erroBuscarInformacoesProibirCorrecao}" >
+        <table border="0" cellpadding="2" cellspacing="2" width="300px" bordercolor="#000000" align="center">
+
+            <tr>
+                <td colspan="2" align="center">
+            <h:outputLabel styleClass="lblBoldErro" value="Você não tem acesso a esta página" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <p:commandButton value="Efetuar Login" action="/view/geral/login.xhtml?faces-redirect=true" ajax="false" type="submit" />
+                </td>
+            </tr>
+
+        </table>
+    </h:form>
+</ui:composition>

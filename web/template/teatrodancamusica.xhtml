@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <h:outputStylesheet library="css" name="styles.css"/>
+        <h:outputScript library="js" name="jsfunctions.js"/>
+        <h:outputScript library="js" name="form.js"/>
+        <title>
+            <ui:insert name="tplTitle">:: Sistema de Correção ::
+            </ui:insert>
+        </title>
+    </h:head>
+    <h:body>
+        <h:form prependId="false">
+            <table style="display: inline-table;" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="1800px">
+                <tr>
+                    <td colspan="4">
+                        <ui:insert name="tplHeader">
+                            <ui:include src="/menu/corretor/teatrodancamusica/cabecalho.xhtml"/>
+                        </ui:insert>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" valign="top">
+                        <ui:insert name="tplMenu">
+                            <!--ui:include src="/menu/perfil/menu.xhtml"/-->
+                        </ui:insert>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" >
+                            <ui:insert name="tplPontuacao">
+                            </ui:insert>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <ui:insert name="tplInformacoes">
+                            <ui:include src="/menu/corretor/teatrodancamusica/informacoes.xhtml"/>
+                        </ui:insert>
+
+                    </td>
+                    <td colspan="2">
+                        <ui:insert name="tplFinalizacao">
+
+                        </ui:insert>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" width="1800px;" valign="top" align="center" >
+                        <ui:insert name="tplContents">
+                            Prova
+                        </ui:insert>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" width="1800px;" valign="top" align="center" >
+                        <div>
+                            <ui:insert name="tplMenuCategoriaCriterio">
+                            </ui:insert>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <ui:insert name="tplFooter">
+                            <ui:include src="/menu/corretor/teatrodancamusica/rodape.xhtml"/>
+                        </ui:insert>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>

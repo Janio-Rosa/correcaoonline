@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao}">
+    <h:panelGroup styleClass="txtCentraliza">
+        <h:panelGrid columns="2" cellpadding="5" cellspacing="1" >
+            <p:commandButton value="Enviar - Finalizar Correção" action="#{CorrecaoController.gravaRespostaCandidatoAtualProximaCorrecao()}" ajax="false" type="submit" onclick="return confirm('Deseja terminar a correção da prova atual e prosseguir para a próxima prova?');" />
+            <p:commandButton  value="Problema - Enviar ao Coordenador" action="#{CorrecaoController.respostaComErroEnviarCoordenador()}" ajax="false" type="submit" onclick="return confirm('Deseja pular a prova atual e prosseguir para a próxima?');" title="Se a prova estiver com algum problema na imagem ou identificada, envie-a para o coordenador." />
+        </h:panelGrid>
+    </h:panelGroup>
+</h:panelGroup>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <h:outputStylesheet library="css" name="styles.css"/>
+        <h:outputScript library="js" name="jsfunctions.js"/>
+        <title>
+            <ui:insert name="tplTitle">:: Sistema de Correção ::
+            </ui:insert>
+        </title>
+    </h:head>
+    <h:body>
+        <h:form prependId="false">
+            <table style="display: inline-table; " class="bordaSimples" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="1350px">
+                <tr class="bordaSimples">
+                    <td colspan="4" >
+                        <ui:insert name="tplHeader">
+                            <ui:include src="/menu/corretor/redacao/cabecalho.xhtml"/>
+                        </ui:insert>
+                    </td>
+                </tr>
+                <tr class="bordaSimples">
+                    <td colspan="2" width="50%" >
+                        <ui:insert name="tplInformacoes">
+                            <ui:include src="/menu/corretor/redacao/informacoes.xhtml"/>
+                        </ui:insert>
+
+                    </td>
+                    <td colspan="2" align="center" width="50%">
+                        <ui:insert name="tplFinalizacao">
+                            <ui:include src="/menu/corretor/redacao/finalizacao.xhtml"/>
+                        </ui:insert>
+                    </td>
+                </tr>
+                <tr class="bordaSimples">
+                    <td colspan="2" width="700px;" valign="top" >
+                        <ui:insert name="tplContents">
+                            Prova
+                        </ui:insert>
+                    </td>
+                    <td width="50px;" valign="top" >
+                        <div>
+                            <ui:insert name="tplLinhas">
+
+                            </ui:insert>
+                        </div>                            
+
+                    </td>
+                    <td width="600px;" valign="top" >
+                        <div>
+                            <ui:insert name="tplMenuCategoriaCriterio">
+                            </ui:insert>
+                        </div>
+                        <!--div>
+                            <ui:insert name="tplCriterios">
+                                <p:panel id="pnlCriterios" >
+                                </p:panel>
+                            </ui:insert>
+                        </div-->
+                    </td>
+                </tr>
+                <tr class="bordaSimples">
+                    <td colspan="3" align="left" valign="top" width="100%;" >
+                        <ui:insert name="tplFooter">
+                            <ui:include src="/menu/corretor/redacao/rodape.xhtml"/>
+                        </ui:insert>
+                    </td>
+                    <!--td colspan="2" align="center">
+                        <ui:insert name="tplPontuacao">
+                            <ui:include src="/operation/corretor/redacao/pontuacao.xhtml"/>
+                        </ui:insert>
+                    </td-->
+
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>

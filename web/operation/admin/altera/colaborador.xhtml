@@ -1,0 +1,109 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+        <table border="0" cellpadding="0" cellspacing="2" width="80%" height="100%">
+            <tr><td colspan="2"><h:graphicImage name="linha.jpg" library="images" width="100%" /></td></tr>            
+
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Colaborador: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{Colaborador.pessoaSelecionada.nrCpf}" disabled="true" >
+                <f:selectItem itemLabel="--- Selecione uma pessoa ---" itemValue="0"/>
+                <f:selectItems value="#{Colaborador.listaPessoasCadastradas}" var="pessoaAt" itemValue="#{pessoaAt.nrCpf}" itemLabel="#{pessoaAt.nmPessoa} - #{pessoaAt.nrCpf}"/>
+            </h:selectOneMenu>
+                
+            </td>
+            </tr>
+                  <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Processo Seletivo: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{Colaborador.idProcesso}">
+                <f:selectItems value="#{ProcessoSeletivo.listaProc}" var="cboItensProcesso" itemValue="#{cboItensProcesso.idProcesso}" itemLabel="#{cboItensProcesso.nmProcesso}"/>
+            </h:selectOneMenu>
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Empresa: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{Colaborador.idEmpresa}">
+                <f:selectItems value="#{Empresa.listaEmpresas}" var="cboItensEmpresa" itemValue="#{cboItensEmpresa.idEmpresa}" itemLabel="#{cboItensEmpresa.nmEmpresa}"/>
+                
+            </h:selectOneMenu>
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Banca: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{Colaborador.idBanca}">
+                <f:selectItems value="#{Banca.listaBanca}" var="cboItensBanca" itemValue="#{cboItensBanca.idBanca}" itemLabel="#{cboItensBanca.nmBanca}"/>
+            </h:selectOneMenu>
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Função do colaborador: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{Colaborador.idFuncao}">
+                <f:selectItems value="#{Funcao.listaFuncao}" var="cboItensFuncao" itemValue="#{cboItensFuncao.idFuncao}" itemLabel="#{cboItensFuncao.nmFuncao}"/>
+            </h:selectOneMenu>
+            </td>
+            </tr>
+             <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Tipo de Correção: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{Colaborador.idTipoCorrecao}">
+                <f:selectItems value="#{TipoCorrecao.listaTipoCorrecao}" var="cboItensTipoCorrecao" itemValue="#{cboItensTipoCorrecao.idTipoCorrecao}" itemLabel="#{cboItensTipoCorrecao.nmTipoCorrecao}"/>
+            </h:selectOneMenu>
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Número da Questão: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{Colaborador.idQuestao}">
+                <f:selectItems value="#{QuestaoController.listaQuestoes}" var="cboItensQuestao" itemValue="#{cboItensQuestao.idQuestao}" itemLabel="#{cboItensQuestao.nmQuestao}"/>
+            </h:selectOneMenu>
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Ativado?"/>
+            </td>
+            <td align="left">
+            <h:selectBooleanCheckbox title="geral" value="#{Colaborador.inserirColaborador.flAtivo}"/> 
+            </td>
+            </tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr class="borda">
+            <td class="borda" colspan="2">
+            <h:commandButton styleClass="botaoLegal" action="#{Colaborador.gravaAlteracao}" value="Gravar Alteração"/>
+            </td>
+            </tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr>
+                <td colspan="2">
+            <h:outputLabel id="lblMensagemErro" styleClass="lblMensagemDestaque" value="#{Colaborador.mensagem}" rendered="#{Colaborador.exibirMensagem}" />
+            </td>
+            </tr>
+            <tr><td colspan="2"><h:graphicImage name="linha.jpg" library="images" width="100%" /></td></tr>            
+        </table>
+
+    
+</h:panelGroup>

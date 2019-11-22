@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao}">
+
+    <!--h:outputLabel value="{CorrecaoController.mensNotaCriterio}" styleClass="lblBoldVermelho" id="lblNotaAtribuidaDiscursiva"  /-->
+    <!--p:panel header="{CriterioController.generoSelecionado.nmGeneroCategoria}" id="pnlCategoriaDiscursiva" >
+        <h:panelGrid columns="2" id="pnlCategoriaCriterio" >
+            <ui:repeat value="{CriterioController.listaCategoriaCriterios}" var="catAtual" offset="0" >
+                <p:commandButton action="{CriterioController.selecionaCategoriaCriterio()}" value="{catAtual.nmCategoriaCriterio}" ajax="true" update="pnlCriteriosDiscursiva pnlCategoriaDiscursiva" >
+                    <f:setPropertyActionListener target="{CriterioController.categoriaSelecionada.idCategoriaCriterio}" value="{catAtual.idCategoriaCriterio}"/>
+                    <f:setPropertyActionListener target="{CriterioController.categoriaSelecionada.nmCategoriaCriterio}" value="{catAtual.nmCategoriaCriterio}"/>
+                </p:commandButton>
+            </ui:repeat>
+        </h:panelGrid>
+    </p:panel-->
+
+    <!--p:panel header="{CriterioController.categoriaSelecionada.nmCategoriaCriterio} " id="pnlCriterios" -->
+    <p:panel header="Pontuação Final: #{CorrecaoController.notaParcial} " id="pnlCriterios" >
+        <h:panelGrid columns="2" styleClass="alinhaForm" columnClasses="correcaoRed1, correcaoRed2" >
+            <ui:repeat value="#{CriterioController.listaCriterios}" var="criterioatual" >
+                <div align="left">
+                    <!--h:outputLabel styleClass="lblBoldAzulCriterio" value="{criterioatual.nmCriterio} " rendered="{!criterioatual.existeCorrecaoCriterio}"  /-->
+                    <h:outputText  value="#{criterioatual.dsCriterio} " rendered="#{!criterioatual.existeCorrecaoCriterio}" escape="false"/>
+                    <h:outputLabel styleClass="lblBoldAzulCriterio" value="Máximo: #{criterioatual.nrValorMaximo} " rendered="#{!criterioatual.existeCorrecaoCriterio}"/>
+                    <!--h:outputLabel styleClass="lblBoldVerdeCriterio" value="{criterioatual.nmCriterio} " rendered="{criterioatual.existeCorrecaoCriterio}"/-->
+                    <h:outputText styleClass="lblBoldVerdeCriterio" value="#{criterioatual.dsCriterio} " rendered="#{criterioatual.existeCorrecaoCriterio}" escape="false" />
+                    <h:outputLabel styleClass="lblBoldVerdeCriterio" value="Máximo: #{criterioatual.nrValorMaximo} " rendered="#{criterioatual.existeCorrecaoCriterio}"/>
+                    <h:outputLabel styleClass="lblBoldCriterioNotaDada" value=".  Nota: #{criterioatual.nrValor}" rendered="#{criterioatual.existeCorrecaoCriterio}"/>
+                    <!--h:outputLabel styleClass="lblBoldAzulCriterio" value=".  Nota: 0" rendered="{!criterioatual.existeCorrecaoCriterio}" /-->
+                </div>
+                <p:inputText value="#{CorrecaoController.correcaoCriterioAtual.notaDigitada}" onkeypress="return soNumero(event);"  onclick="this.select();" immediate="true" >
+                    <p:ajax event="blur" listener="#{CorrecaoController.corrigeCriterio(criterioatual.idCriterio,criterioatual.nmCriterio)}" update="lblNotaAtribuidaDiscursiva pnlCriterios pnlPontuacaoParcial lblTempoRestanteSessao pnlGravarResposta" />
+                </p:inputText>
+            </ui:repeat>
+        </h:panelGrid>
+    </p:panel>
+    <h:panelGrid columns="1" id="pnlGravarResposta">
+        <h:panelGroup styleClass="txtCentraliza">
+            <p:commandButton value="Enviar - Finalizar Correção" action="#{CorrecaoController.gravaRespostaCandidatoAtualProximaCorrecao()}" ajax="false" type="submit" onclick="return confirm('Deseja terminar a correção atual?');" rendered="#{CorrecaoController.bolMostraBotaoEnviar}" />
+        </h:panelGroup>
+    </h:panelGrid>
+    <h:panelGrid columns="1" ></h:panelGrid><h:panelGrid columns="1" ></h:panelGrid><h:panelGrid columns="1" ></h:panelGrid><h:panelGrid columns="1" ></h:panelGrid>
+    <h:panelGrid columns="1" ></h:panelGrid><h:panelGrid columns="1" ></h:panelGrid><h:panelGrid columns="1" ></h:panelGrid><h:panelGrid columns="1" ></h:panelGrid>
+    <h:panelGrid columns="1" ></h:panelGrid><h:panelGrid columns="1" ></h:panelGrid><h:panelGrid columns="1" ></h:panelGrid><h:panelGrid columns="1" ></h:panelGrid>
+    <h:panelGrid columns="1" id="pnlGravaNotaZero">
+        <p:commandButton value="Nota Zero" action="#{CorrecaoController.gravaRespostaZeroProximaCorrecao()}" ajax="false" type="submit" onclick="return confirm('Deseja avaliar a correção como zero?');" />
+    </h:panelGrid>
+    
+    <h:panelGrid columns="4" cellpadding="4" cellspacing="4">
+        <h:outputLabel value=" PROVA COM DISCREPÂNCIA " styleClass="lblBoldVermelhoMedio" rendered="#{CorrecaoController.candidatoAtual.flDiscrepancia}" />
+        <table>
+            <ui:repeat value="#{CorrecaoController.listaCorrecoes}" var="corAtual" offset="0">
+                <tr><td>
+                <h:outputLabel value="#{corAtual.idTipoCorrecao.nmTipoCorrecao}: #{corAtual.idColaborador.nrCpf.nmPessoa}" styleClass="lblBoldVermelhoMedio" rendered="#{CorrecaoController.candidatoAtual.flDiscrepancia}"/>
+                </td></tr>
+            </ui:repeat>
+        </table>
+    </h:panelGrid>
+
+</h:panelGroup>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:panelGroup style="vertical-align: top;" rendered="#{RelatorioDetalhado.existeImagemProvaAtual}">
+        <!--p:graphicImage value="{RelatorioDetalhado.imagemCandidatoAtual}" width="800px;" height="900px" rendered="{RelatorioDetalhado.imagemCandidatoAtual ne null}" /-->
+        <p:graphicImage value="#{RelatorioDetalhado.imagemCandidatoAtual}" width="800px;" height="900px" rendered="#{RelatorioDetalhado.existeImagemProvaAtual}" />
+
+        <p:outputPanel  styleClass="imgRetanguloDestaque" >
+            <h:outputLabel style="height: 2px; font-size: 1px; " value="......"/>
+        </p:outputPanel>
+        <p:outputPanel  styleClass="imgRetanguloDestaque" >
+            <h:outputLabel style="height: 2px; font-size: 1px; " value="......"/>
+        </p:outputPanel>
+    </h:panelGroup>
+</h:panelGroup>

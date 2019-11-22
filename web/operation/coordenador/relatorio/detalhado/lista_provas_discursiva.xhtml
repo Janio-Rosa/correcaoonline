@@ -1,0 +1,48 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Provas Corrigidas:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{RelatorioDetalhado.gridCorrecoes}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel"   >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Código:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.cdSerial}-#{atual.idResposta} - Nota: "/>
+                <h:outputLabel styleClass="digita" value="#{atual.nrNota}">
+                    <f:convertNumber maxFractionDigits="2"/>
+                </h:outputLabel>
+                
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Data de Correção:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.dtInsercaoCorrecao}">
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy hh:mm:ss"  timeZone="America/Sao_Paulo" locale="pt,BR"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Ver "/></f:facet>
+                <h:commandLink value="Ver" action="#{RelatorioDetalhado.encaminhaRelDetalhadoProvasDiscursiva()}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Corrigir Novamente"/></f:facet>
+                <h:commandLink value="Voltar Correçao" action="#{RelatorioDetalhado.corrigirNovamente(atual.idResposta,atual.idCorrecao,atual.idColaborador)}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Fixar prova"/></f:facet>
+                <h:commandLink value="Fixar Correção" action="#{RelatorioDetalhado.fixarProva(atual.idResposta,atual.idCorrecao,atual.idColaborador)}" onclick="return confirm('Deseja fixar a prova de código #{atual.idResposta} para este corretor?');" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Mandadr para Discrepancia"/></f:facet>
+                <h:commandLink value="Discrepancia" action="#{RelatorioDetalhado.mandarDiscrepancia(atual.idResposta)}"/>
+            </h:column>
+            
+        </h:dataTable>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldVermelhoMedio" value="#{RelatorioDetalhado.mensagem}"/>
+    </h:panelGrid>
+</h:panelGroup>

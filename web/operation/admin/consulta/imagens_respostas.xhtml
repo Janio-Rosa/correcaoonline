@@ -1,0 +1,71 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+    <p:panel id="pnlConsultaImagem">
+        <h:panelGrid columns="5">
+            <p:commandButton value="Anterior" action="#{RespostaController.consultaRespostaAnterior()}" ajax="false" type="submit"  />
+            <p:commandButton value="Próxima" action="#{RespostaController.consultaProximaResposta()}" ajax="false" type="submit"  />
+            <h:outputLabel value="Digite o ID da resposta a ser consultada: "/>
+            <p:inputText  value="#{RespostaController.idRespostaConsultar}" id="txtNumeroConsulta" >
+                <p:ajax event="blur" immediate="true" />
+            </p:inputText>
+            <p:commandButton value="Consulta por ID" action="#{RespostaController.consultaPorId()}" ajax="false" type="submit"  />
+        </h:panelGrid>
+        <h:panelGrid columns="3">
+            <p:commandButton value="Resposta OK - Sem erro" action="#{RespostaController.gravaRespostaOKSemErro()}" ajax="false" type="submit"  />
+            <p:commandButton value="Resposta em branco" action="#{RespostaController.gravaRespostaEmBranco()}" ajax="false" type="submit"  />
+            <p:commandButton value="Grava modificações da imagem" action="#{RespostaController.gravaDesidentificacao()}" ajax="false" type="submit"  />
+        </h:panelGrid>
+        <h:panelGrid columns="6">
+            <p:commandButton value="Desidentificar - parte superior" action="#{RespostaController.desidentificarImagem()}" ajax="false" type="submit"  />
+            <p:commandButton value="Corta parte superior" action="#{RespostaController.cortaPedacinhoSuperior()}" ajax="false" type="submit"  />
+            <p:commandButton value="Corta parte inferior" action="#{RespostaController.cortaPedacinhoInferior()}" ajax="false" type="submit"  />
+            <p:commandButton value="Corta filipetas da direita" action="#{RespostaController.cortaFilipetaDireita()}" ajax="false" type="submit"  />
+            <p:commandButton value="Gira para direita" action="#{RespostaController.giraParaDireita()}" ajax="false" type="submit"  />
+            <p:commandButton value="Gira para esquerda" action="#{RespostaController.giraParaEsquerda()}" ajax="false" type="submit"  />
+        </h:panelGrid>
+        <h:panelGrid columns="12">
+            <h:outputLabel value="Curso:" styleClass="lblBoldAzulMedio" />
+            <h:outputLabel value=" #{RespostaController.candidatoAtual.idCurso.nmCurso}"/>
+            <h:outputLabel value="Processo: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value=" #{RespostaController.candidatoAtual.idProcesso.nmProcesso}"/>
+            <h:outputLabel value="Disciplina: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value=" #{RespostaController.candidatoAtual.idDisciplina.nmDisciplina}"/>
+            <h:outputLabel value="Questão: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value=" #{RespostaController.candidatoAtual.nrQuestao}"/>
+            <h:outputLabel value="Inscrição: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value=" #{RespostaController.inscricaoCandidatoAtual.nrInscricao}"/>
+        </h:panelGrid>
+        <h:panelGrid columns="4">
+            <h:outputLabel value="Arquivo importação: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value="D#{RespostaController.candidatoAtual.idDisciplina.idDisciplina}Q#{RespostaController.candidatoAtual.nrQuestao}I#{RespostaController.inscricaoCandidatoAtual.nrInscricao}"/>
+            <h:outputLabel value="Arquivo divulgação: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value="D#{RespostaController.candidatoAtual.idDisciplina.idDisciplina}Q#{RespostaController.candidatoAtual.nrQuestao}_#{RespostaController.inscricaoCandidatoAtual.nmArquivo}"/>
+            <h:outputLabel value="Nr Ordem:" styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value="#{RespostaController.inscricaoCandidatoAtual.nrOrdem}"/>
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <h:outputLabel id="lblMensagemErro" styleClass="lblMensagemDestaque" value="#{RespostaController.mensagem}" rendered="#{RespostaController.exibirMensagem}" />        
+        </h:panelGrid>
+        <p:graphicImage value="#{RespostaController.imagemCandidatoAtual}" width="800px;" height="900px" id="imgConsultaResposta" />
+        <h:panelGrid columns="1">
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ1}" width="800px;" height="900px"  />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ2}" width="800px;" height="900px" />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ3}" width="800px;" height="900px"  />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ4}" width="800px;" height="900px" />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ5}" width="800px;" height="900px"  />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ6}" width="800px;" height="900px" />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ7}" width="800px;" height="900px"  />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ8}" width="800px;" height="900px" />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ9}" width="800px;" height="900px"  />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ10}" width="800px;" height="900px" />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ11}" width="800px;" height="900px" rendered="#{RespostaController.imagensCandidatoAtualQ11 != null}"/>
+            
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <h:graphicImage name="linha.jpg" library="images" width="100%" />        
+        </h:panelGrid>
+    </p:panel>
+
+</h:panelGroup>

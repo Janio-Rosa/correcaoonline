@@ -1,0 +1,113 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+        <table border="0" cellpadding="0" cellspacing="2" width="80%" height="100%">
+            <tr><td colspan="2" ><h:graphicImage name="linha.jpg" library="images" width="100%" /></td></tr>    
+             <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Nome do Usuário: "/>
+            </td>
+            <td align="left">
+            <h:inputText value="#{Usuario.inserirPessoa.nmPessoa}" />
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Empresa: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{Usuario.idEmpresa}">
+                <f:selectItems value="#{Empresa.listaEmpresas}" var="cboItensEmpresa" itemValue="#{cboItensEmpresa.idEmpresa}" itemLabel="#{cboItensEmpresa.nmEmpresa}"/>
+                
+            </h:selectOneMenu>
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right"> 
+            <h:outputLabel value="RG: "  />
+            </td>
+            <td align="left">
+            <h:inputText value="#{Usuario.inserirPessoa.nrRg}" />
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Orgão Expedidor: "  />
+            </td>
+            <td align="left">
+            <h:inputText value="#{Usuario.inserirPessoa.nmRgOrgao}" maxlength="4" />
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="UF: " />
+            </td>
+            <td align="left">
+            <h:inputText value="#{Usuario.inserirPessoa.nmRgUf}" maxlength="2" />
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="CPF: "/>
+            </td>
+            <td align="left">
+            <h:inputText value="#{Usuario.inserirPessoa.nrCpf}" maxlength="11" />
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right" >
+            <h:outputLabel value="Usuário: "/>
+            </td>
+            <td align="left">
+            <h:inputText value="#{Usuario.inserirUsuario.nmUsuario}" />
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Senha : "/>
+            </td>
+            <td align="left">
+            <h:inputSecret id="senha" value="#{Usuario.inserirUsuario.nmSenha}"/>
+            </td>
+            </tr>
+               <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Confirmação de Senha: "/>
+            </td>
+            <td align="left">
+            <h:inputSecret value="#{Usuario.senha}" />
+            </td>
+            </tr>
+      
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Disciplina: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{Usuario.usuarioDisciplina.idDisciplina}">
+                <f:selectItem itemLabel="--- Selecione uma disciplina ---" itemValue="0"/>
+                <f:selectItems value="#{Disciplina.listaDisciplinas}" var="disciplinaAtual" itemValue="#{disciplinaAtual.idDisciplina}" itemLabel="#{disciplinaAtual.nmDisciplina}"/>
+            </h:selectOneMenu>
+            
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" colspan="2">
+            <h:commandButton id="cmdGera" styleClass="botaoLegal" action="#{Usuario.insereUsuario}" value="Insere Usuário"/>
+            </td>
+            </tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr>
+                <td colspan="2">
+            <h:outputLabel id="lblMensagemErro" styleClass="lblMensagemDestaque" value="#{Usuario.mensagem}" rendered="#{Usuario.exibirMensagem}" />
+            </td>
+            </tr>
+            <tr><td colspan="2"><h:graphicImage name="linha.jpg" library="images" width="100%" /></td></tr>            
+        </table>
+
+    
+</h:panelGroup>

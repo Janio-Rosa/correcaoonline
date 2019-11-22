@@ -1,0 +1,49 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+   
+  
+    
+   
+    <h:panelGrid columns="1" id="pnlListaColaboradores" >
+       
+   <h:dataTable id="tblDadosColaboradores" value="#{Colaborador.gridColaboradorBanca}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel" columnClasses="TituloTabela1"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Colaborador"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmPessoa}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Processo"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmProcesso}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Banca"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmBanca}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Função"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmFuncao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Tipo de Correção"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmTipoCorrecao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Número da Questão"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmQuestao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Banca "/></f:facet>
+                <h:selectOneMenu  value="#{atual.idBanca}">
+                    <f:selectItem itemLabel="--- Nenhuma ---" itemValue="0"/>
+                    <f:selectItems value="#{Banca.listaBanca}" var="cboItensBanca" itemValue="#{cboItensBanca.idBanca}" itemLabel="#{cboItensBanca.nmBanca}"/>
+                    <f:ajax listener="#{Colaborador.selecionaBanca()}" event="click" execute="@this" />
+                </h:selectOneMenu>
+            </h:column>
+            
+            
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

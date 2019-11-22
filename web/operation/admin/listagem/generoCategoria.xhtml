@@ -1,0 +1,32 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Gêneros das Categorias Cadastradas:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{GeneroCategoria.gridGeneroCategorias}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel" columnClasses="TituloTabela1"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Nome do Gênero da Categoria:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmGeneroCategoria}"/>
+            </h:column>
+             <h:column>
+                <f:facet name="header"><h:outputLabel  value="Gênero da Categoria Pai:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.idGeneroCategoriaPai.nmGeneroCategoria}"/>
+            </h:column>
+               <h:column>
+                <f:facet name="header"><h:outputLabel  value="Tipo de Questão:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.idTipoQuestao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Alterar: "/></f:facet>
+                <h:commandLink value="Alterar" action="#{GeneroCategoria.prepararAlterar}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Excluir: "/></f:facet>
+                <h:commandLink value="Excluir" action="#{GeneroCategoria.apaga()}"  onclick="return confirm('Deseja excluir o Gênero da Categoria #{atual.nmGeneroCategoria} ?');" />
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

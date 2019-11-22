@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.prime.com.tr/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <h:outputStylesheet library="css" name="styles.css"/>
+        <h:outputScript library="js" name="jsfunctions.js"/>
+        <!--link rel="stylesheet" type="text/css" href="../.."/-->
+        <!--link rel="stylesheet" type="text/css" href="/Modelo/resources/styles.css"/-->
+        <title>
+            <ui:insert name="tplTitle">:: Sistema de Correção ::
+            </ui:insert>
+        </title>
+    </h:head>
+    <h:body >
+        <table style="display: inline-table;" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="700">
+            <tr>
+                <td>
+                    <h:graphicImage library="images" name="spacer2.gif" width="21" height="1" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="spacer2.gif" width="654" height="1" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="spacer2.gif" width="25" height="1" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="spacer2.gif" width="1" height="1" />
+                </td>
+            </tr>
+
+            <tr>
+                <td rowspan="2">
+                    <h:graphicImage library="images" name="cert_v1_r1_c1.gif" width="21" height="324" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="cert_v1_r1_c2.gif" width="654" height="126" />
+                </td>
+                <td rowspan="2">
+                    <h:graphicImage library="images" name="cert_v1_r1_c3.gif" width="25" height="324" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="spacer2.gif" width="1" height="126" />
+                </td>
+            </tr>
+            <tr>
+                <td height="198">
+                    <!--h:graphicImage library="images" name="cert_v1_r2_c2.gif" width="654" height="198" /-->
+                    <table cellpadding="4" cellspacing="4">
+                        <tr>
+                            <td width="30%">
+                                <ui:insert name="tplMenu">
+                                    <ui:include src="/operation/shared/menu.xhtml"/>
+                                </ui:insert>
+                                
+                            </td>
+                            <td width="70%">
+                                <ui:insert name="tplContents">
+
+                                </ui:insert>
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="spacer2.gif" width="1" height="198" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h:graphicImage library="images" name="cert_v1_r3_c1.gif" width="21" height="42" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="cert_v1_r3_c2.gif" width="654" height="42" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="cert_v1_r3_c3.gif" width="25" height="42" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="spacer2.gif" width="1" height="42" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h:graphicImage library="images" name="cert_v1_r4_c1.gif" width="21" height="84" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="cert_v1_r4_c2.gif" width="654" height="84" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="cert_v1_r4_c3.gif" width="25" height="84" />
+                </td>
+                <td>
+                    <h:graphicImage library="images" name="spacer2.gif" width="1" height="84" />
+                </td>
+            </tr>
+        </table>
+    </h:body>    
+</html>

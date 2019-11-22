@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao}">
+
+    <!--h:outputLabel value="Tempo restante: " styleClass="lblBoldVermelho" /-->
+    <!--h:outputLabel value="{Usuario.sessionRemainingTime}" styleClass="lblBoldVermelho" id="lblTempoRestanteSessao" /-->
+
+    <h:panelGrid columns="3" cellpadding="4" cellspacing="4">
+        <h:outputLabel value=" PROVA COM DISCREPÂNCIA " styleClass="lblBoldVermelhoMedio" rendered="#{CorrecaoController.candidatoAtual.flDiscrepancia}" />
+        <!--table>
+            <tr><td>
+                    </td></tr>
+            </table-->
+        <h:panelGrid columns="4" cellpadding="4" cellspacing="4">
+            <ui:repeat value="#{CorrecaoController.listaCorrecoes}" var="corAtual" offset="0">
+                <h:outputLabel value="#{corAtual.idTipoCorrecao.nmTipoCorrecao}: " styleClass="lblBoldVermelhoMedio" rendered="#{CorrecaoController.candidatoAtual.flDiscrepancia and (corAtual.idTipoCorrecao.idTipoCorrecao==14 or corAtual.idTipoCorrecao.idTipoCorrecao==15 )}"/>
+                <h:outputLabel value="#{corAtual.idColaborador.nrCpf.nmPessoa}" styleClass="lblBoldAzulMedio" rendered="#{CorrecaoController.candidatoAtual.flDiscrepancia and (corAtual.idTipoCorrecao.idTipoCorrecao==14 or corAtual.idTipoCorrecao.idTipoCorrecao==15 )}"/>
+            </ui:repeat>
+        </h:panelGrid>
+    </h:panelGrid>
+</h:panelGroup>

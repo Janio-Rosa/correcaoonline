@@ -1,0 +1,20 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Corretores:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{RelatorioDetalhado.gridCorretores}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel"   >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Corretor:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmPessoa}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Ver Correção "/></f:facet>
+                <h:commandLink value="Ver" action="#{RelatorioDetalhado.encaminhaRelDetalhadoListaProvas()}"/>
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

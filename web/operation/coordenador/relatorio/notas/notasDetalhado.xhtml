@@ -1,0 +1,87 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1" rendered="#{Usuario.logado}">
+        <h:outputLabel styleClass="lblBoldAzul" value="Relatório de Notas - #{RelatorioDetalhado.processoSelecionado.nmProcesso}"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1" rendered="#{Usuario.logado}">
+        <h:dataTable value="#{RelatorioDetalhado.listaNotas}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel"   >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="CPF:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrCpf}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Inscrição:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrInscricao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Código1:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.idResposta}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Código2:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmArquivo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Corretor 1:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrNota1}">
+                    <f:convertNumber maxFractionDigits="2"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Corretor 2:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrNota2}">
+                    <f:convertNumber maxFractionDigits="2"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Corretor 3:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrNota3}">
+                    <f:convertNumber maxFractionDigits="2"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Corretor 4:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrNota4}">
+                    <f:convertNumber maxFractionDigits="2"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Discrepancia:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrNotaDiscrepancia}">
+                    <f:convertNumber maxFractionDigits="2"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Média para 3:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.vlMedia}">
+                    <f:convertNumber maxFractionDigits="2"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Média para 2:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{(atual.nrNota1+atual.nrNota2)/2}">
+                    <f:convertNumber maxFractionDigits="2"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Média para 4:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{(atual.nrNota1+atual.nrNota2+atual.nrNota3+atual.nrNotaDiscrepancia)/4}">
+                    <f:convertNumber maxFractionDigits="2"/>
+                </h:outputLabel>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Mandadr para Discrepancia"/></f:facet>
+                <h:commandLink value="Voltar para Discrepancia" action="#{RelatorioDetalhado.mandarDiscrepancia(atual.idResposta)}"/>
+            </h:column>
+            
+        </h:dataTable>
+    </h:panelGrid>
+    
+    <h:panelGrid columns="1" rendered="#{not Usuario.logado}" >
+        <h:outputLabel styleClass="digita" value="Você não tem acesso a esta área."/>
+    </h:panelGrid>
+    
+</h:panelGroup>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core" >
+
+    <!--h:panelGrid id="pnlCriteriosJaCorrigidosComLinha" columns="1">
+        <ui:repeat value="{RelatorioDetalhado.criteriosJacorrigidos}" var="jacorrigido" >
+            <h:panelGrid   columns="7">
+                <h:outputLabel value="Linha: "  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="{jacorrigido.nrLinha}"  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="Critério: "  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="{jacorrigido.idCriterio.nmCriterio}"  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="Valor:"  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="{jacorrigido.nrValor} "  styleClass="lblBoldAzulPequeno"/>
+            </h:panelGrid>
+        </ui:repeat>
+    </h:panelGrid-->
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Corretor: " styleClass="lblBoldVermelhoMedio" />
+        <h:outputLabel value="#{RelatorioDetalhado.correcaoSelecionada.idColaborador.nrCpf.nmPessoa}" styleClass="lblBoldAzul"  />
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Nota: " styleClass="lblBoldAzulMedio" />
+        <h:outputLabel value="#{RelatorioDetalhado.correcaoSelecionada.nrNota}" styleClass="lblBoldAzul"  >
+            <f:convertNumber maxFractionDigits="2" />
+        </h:outputLabel>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{RelatorioDetalhado.categoriasCorrecao}" var="atual2" border="0" headerClass="TituloTabelaPequena" rowClasses="LinhaPar,LinhaImpar" >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Categoria:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual2.nmCategoriaCriterio}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Perda:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual2.nrPerdaTotal}"><f:convertNumber maxFractionDigits="2" /></h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Máximo:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual2.nrValorMaximo}"><f:convertNumber maxFractionDigits="2" /></h:outputLabel>
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{RelatorioDetalhado.criteriosJacorrigidos}" var="atual" border="0" headerClass="TituloTabelaPequena" rowClasses="LinhaPar,LinhaImpar" >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Linha:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrLinha}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Critério:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmCriterio}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Perda:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrValor}"><f:convertNumber maxFractionDigits="2" /></h:outputLabel>
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

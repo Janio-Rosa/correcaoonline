@@ -1,0 +1,45 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Correção Detalhada:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{RelatorioDetalhado.gridConsolidadoGeral}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel"  >
+            
+            
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Disciplina"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmDisciplina}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Total de Provas:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtTotalRespostas}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Total de Discrepâncias:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtTotalDiscrepancias }"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Primeira Correção:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtPrimeiraCorrecao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Segunda Correção:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtSegundaCorrecao}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Concluído 1ª Correção:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{((atual.qtPrimeiraCorrecao*100)/(atual.qtTotalRespostas))}%"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Concluído 2ª Correção:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{((atual.qtSegundaCorrecao*100)/(atual.qtTotalRespostas))}%"/>
+            </h:column>
+          
+            
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

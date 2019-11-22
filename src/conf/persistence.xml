@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="correcaoPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>model.TbUsuarioPerfil</class>
+    <class>model.TbUsuario</class>
+    <class>model.VwUsuarioFuncionalidade</class>
+    <class>model.TbProcesso</class>
+    <class>model.TbFuncionalidade</class>
+    <class>model.TbPessoa</class>
+    <class>model.TbEmpresa</class>
+    <class>model.TbCategoria</class>
+    <class>model.TbBanca</class>
+    <class>model.TbColaborador</class>
+    <class>model.TbPerfilFuncionalidade</class>
+    <class>model.TbCorrecaoCriterio</class>
+    <class>model.TbDisciplina</class>
+    <class>model.TbResposta</class>
+    <class>model.TbFuncao</class>
+    <class>model.TbCatcriterio</class>
+    <class>model.TbCriterio</class>
+    <class>model.TbPerfil</class>
+    <class>model.TbCorrecao</class>
+    <class>model.TbTipoCorrecao</class>
+    <class>model.TbCategoriaCriterio</class>
+    <class>model.TbTipoQuestao</class>
+    <class>model.TbTipoCategoria</class>
+    <class>model.TbGeneroCategoria</class>
+    <class>model.TbRespostaImagem</class>
+    <class>model.TbCurso</class>
+    <class>model.VwProximaCorrecao</class>
+    <class>model.VwCriterioComCorrecaoCriterio</class>
+    <class>model.VwRespostaImagem</class>
+    <class>model.VwRespostasComProblema</class>
+    <class>model.VwTipoCorrecaoFeita</class>
+    <class>model.VwCorrecaoCriterio</class>
+    <class>model.VwEstatisticaCriterioCorrecaoFeita</class>
+    <class>model.VwEstatisticaCorrecaoPorCorretor</class>
+    <class>model.VwRepostaCorrecao</class>
+    <class>model.VwProcessoDisciplina</class>
+    <class>model.VwProcessoDisciplinaCorretor</class>
+    <class>model.VwRespostaCorrecao</class>
+    <class>model.VwRespostaInscricao</class>
+    <class>model.VwRespostaInscricaoCorrecao</class>
+    <class>model.VwColaboradorPendente</class>
+    <class>model.VwColaboradorPendenteDiscrepancia</class>
+    <class>model.VwColaboradorCorrecaoAtual</class>
+    <class>model.VwResposta1aCorrecao</class>
+    <class>model.VwResposta2aCorrecao</class>
+    <class>model.VwResposta3aCorrecao</class>
+    <class>model.VwConfere1aCorrecao</class>
+    <class>model.VwConfere3aCorrecao</class>
+    <class>model.VwConfere2aCorrecao</class>
+    <class>model.VwRelatorioDiscrepancia</class>
+    <class>model.VwRelatorioNotas</class>
+    <class>model.VwCorretorDisciplinaProcesso</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.0.135/sisco"/>
+      <property name="javax.persistence.jdbc.password" value="teste"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="teste"/>
+    </properties>
+  </persistence-unit>
+</persistence>

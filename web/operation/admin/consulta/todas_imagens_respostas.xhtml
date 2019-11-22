@@ -1,0 +1,25 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+    <p:panel id="pnlConsultaDemaisImagens">
+        <h:panelGrid columns="1">
+        <ui:repeat value="#{RespostaController.todasImagensCandidatoAtual}" var="imagemAtual" >
+            <p:graphicImage value="#{imagemAtual}" width="800px;" height="900px" id="imgCorrecaoDiscursiva" />
+        </ui:repeat>
+            
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ1}" width="800px;" height="900px"  />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ2}" width="800px;" height="900px" />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ3}" width="800px;" height="900px"  />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ4}" width="800px;" height="900px" />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ5}" width="800px;" height="900px"  />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ6}" width="800px;" height="900px" />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ7}" width="800px;" height="900px"  />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ8}" width="800px;" height="900px" />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ9}" width="800px;" height="900px"  />
+            <p:graphicImage value="#{RespostaController.imagensCandidatoAtualQ10}" width="800px;" height="900px" />
+            
+        </h:panelGrid>
+    </p:panel>
+
+</h:panelGroup>

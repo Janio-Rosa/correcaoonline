@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao}">
+    <h:panelGroup styleClass="txtCentraliza">
+        <p:commandButton value="Enviar - Finalizar Correção" action="#{CorrecaoController.gravaRespostaCandidatoAtualProximaCorrecao()}" ajax="false" type="submit" onclick="return confirm('Deseja terminar a correção da prova atual e prosseguir para a próxima prova?');" />
+        <!--p:commandButton value="Próxima Correção" action="{CorrecaoController.proximaCorrecao()}" ajax="false" type="submit" /-->
+    </h:panelGroup>
+</h:panelGroup>

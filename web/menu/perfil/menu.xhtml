@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGrid xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui"
+        xmlns:f="http://java.sun.com/jsf/core">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td>
+                <h:outputLabel styleClass="lblBold"  value="Você está logado como: " rendered="#{Usuario.logado}" />
+                <h:outputLabel styleClass="lblBold" value="#{Usuario.usuario.nmUsuario}" rendered="#{Usuario.logado}"/>
+            </td>
+        </tr>
+        <tr>
+            <td><h:graphicImage library="images" name="linha.jpg" height="1" width="140" rendered="#{Usuario.logado}" /></td>
+        </tr>
+        <tr><td >&nbsp;</td></tr>
+        <tr>
+            <td class="campo"><h:commandLink action="#{Usuario.doExit}" styleClass="button" value="Sair"/></td>
+        </tr>
+        <tr><td><h:graphicImage library="images" name="linha.jpg" height="1" width="140"/></td></tr>
+        <tr>
+            <td>
+                <div id="Menu">
+                <ul >
+                    <li value="Opções">
+                    <ui:repeat value="#{Usuario.funcionalidades}" var="atual" >
+                        <ol class="alinhaMenuOl">
+                            <h:commandLink styleClass="lblMenuBold"  action="#{Navegacao.navegarPara}" value="#{atual.nmFuncionalidade}">
+                                <f:setPropertyActionListener target="#{Navegacao.funcionalidade.nmPaginaSistema}" value="#{atual.nmPaginaSistema}"/>
+                                <f:setPropertyActionListener target="#{Navegacao.funcionalidade.idFuncionalidade}" value="#{atual.idFuncionalidade}"/>
+                                <f:setPropertyActionListener target="#{Navegacao.funcionalidade.nmFuncionalidade}" value="#{atual.nmFuncionalidade}"/>
+                            </h:commandLink>
+                        </ol>
+                    </ui:repeat>
+                        </li>
+                </ul>
+                </div>
+            </td>
+        </tr>
+        <tr><td><h:graphicImage library="images" name="linha.jpg" height="1" width="140"/></td></tr>
+        <tr>
+            <td class="campo"><h:commandLink action="#{Usuario.doExit}" styleClass="button" value="Sair"/></td>
+        </tr>
+    </table>
+
+</h:panelGrid>

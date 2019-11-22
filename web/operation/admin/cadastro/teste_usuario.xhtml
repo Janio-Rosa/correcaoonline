@@ -1,0 +1,35 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <h:panelGrid columns="2" >
+            <h:outputLabel value="Nome do usuário: "/>
+            <h:inputText value="#{Usuario.inserirPessoa.nmPessoa}" />
+            <h:outputLabel value="Empresa: "/>
+            <h:selectOneMenu  value="#{Usuario.idEmpresa}">
+                <f:selectItems value="#{Empresa.listaEmpresas}" var="cboItensEmpresa" itemValue="#{cboItensEmpresa.idEmpresa}" itemLabel="#{cboItensEmpresa.nmEmpresa}"/>
+                
+            </h:selectOneMenu>
+            <h:outputLabel value="RG: "/>
+            <h:inputText value="#{Usuario.inserirPessoa.nrRg}" />
+            <h:outputLabel value="Orgão Expedidor: "/>
+            <h:inputText value="#{Usuario.inserirPessoa.nmRgOrgao}" />
+            <h:outputLabel value="UF: "/>
+            <h:inputText value="#{Usuario.inserirPessoa.nmRgUf}" />
+            <h:outputLabel value="CPF: "/>
+            <h:inputText value="#{Usuario.inserirPessoa.nrCpf}" maxlength="11" />
+            <h:outputLabel value="Usuário: "/>
+            <h:inputText value="#{Usuario.inserirUsuario.nmUsuario}" />
+            <h:outputLabel value="Senha : "/>
+            <h:inputSecret value="#{Usuario.inserirUsuario.nmSenha}"/>
+            <h:outputLabel value="Descrição : "/>
+            <h:inputText value="#{Usuario.inserirUsuario.dsChavePublica}" />
+            <h:outputLabel value="Código do Curso: "/>
+            <h:inputText value="#{Usuario.inserirUsuario.cdCurso}" />
+            <h:commandLink id="cmdGera" styleClass="botao" action="#{Usuario.insereUsuario}" value="Insere Usuário"/>
+            <h:outputLabel id="lblMensagemErro" styleClass="lblMensagemDestaque" value="#{Usuario.mensagem}" rendered="#{Usuario.exibirMensagem}" />
+</h:panelGrid>
+    
+</h:panelGroup>

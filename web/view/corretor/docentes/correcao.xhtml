@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/docentes.xhtml"
+                >
+    <ui:define name="tplContents" >
+        <ui:include src="/operation/corretor/docentes/corretor.xhtml" />
+        <ui:include src="/operation/shared/semacesso.xhtml" />
+    </ui:define>
+    <ui:define name="tplMenuCategoriaCriterio" >
+        <ui:include src="/operation/corretor/docentes/categoria_criterio.xhtml"/>
+        <!--ui:include src="/operation/corretor/docentes/categoria_criterio_justificativa.xhtml"/-->
+    </ui:define>
+    <ui:define name="tplPontuacao" >
+        <ui:include src="/operation/corretor/docentes/pontuacao.xhtml"/>
+    </ui:define>
+
+</ui:composition>

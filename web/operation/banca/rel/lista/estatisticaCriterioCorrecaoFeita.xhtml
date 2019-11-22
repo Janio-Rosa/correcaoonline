@@ -1,0 +1,36 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Critérios das correções feitas:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <h:selectBooleanCheckbox value="#{RelatorioBancaController.bolOrdenarRelCriterioCorrecaoPorQuantidade}" title="Ordenar por quantidade" id="chkOrdenaPorQuantidade" >
+            <f:ajax execute="@this" event="change" listener="#{RelatorioBancaController.recarregaConsultaOrdenacaoCriterioCorrecaoQuantidade}" render="pnlRelatorioCriterioCorrecao"/>
+        </h:selectBooleanCheckbox>
+        <h:outputLabel styleClass="lblBoldAzul" value="Ordenar por quantidade">
+            <f:ajax execute="@this" event="click" listener="#{RelatorioBancaController.recarregaConsultaOrdenacaoCriterioCorrecaoQuantidadeTroca}" render="pnlRelatorioCriterioCorrecao chkOrdenaPorQuantidade"/>
+        </h:outputLabel>
+    </h:panelGrid>
+    
+    <h:panelGrid columns="1" id="pnlRelatorioCriterioCorrecao">
+
+        <h:dataTable value="#{RelatorioBancaController.criteriosCorrecoes}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel" columnClasses="TituloTabela1"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Critério: "/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmCriterio}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Categoria:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmCategoriaCriterio}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Número de Provas Corrigidas:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrQuantidade}"/>
+            </h:column>
+         
+          
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

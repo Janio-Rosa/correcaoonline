@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+    <!--p:imageCropper image="/resources/digitalizacoes/modelo.jpg"  /-->
+    <!--width="800px;" height="800px"-->
+
+    <!--h:graphicImage library="digitalizacoes" name="692C77_recortada.jpg" width="800px;" height="900px"/-->
+    <!--h:panelGroup rendered="{CorrecaoController.bolRespostaEncontrada}"-->
+
+    <h:panelGroup style="vertical-align: top;" >
+        <p:graphicImage value="#{CorrecaoController.imagemCandidatoAtual}" width="800px;" height="900px" id="imgRespostaQuestaoEmCorrecao" />
+        <p:outputPanel  styleClass="imgRetanguloDestaque" id="pnlDestacarImagem1">
+            <h:outputLabel style="height: 2px; font-size: 1px; " value="......"/>
+        </p:outputPanel>
+        <p:outputPanel  styleClass="imgRetanguloDestaque" id="pnlDestacarImagem2">
+            <h:outputLabel style="height: 2px; font-size: 1px; " value="......"/>
+        </p:outputPanel>
+    </h:panelGroup>
+    <!--/h:panelGroup-->
+</h:panelGroup>

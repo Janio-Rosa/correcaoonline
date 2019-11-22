@@ -1,0 +1,24 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1" rendered="#{Usuario.logado}">
+        <h:outputLabel styleClass="lblBoldAzul" value="Disciplinas:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1" rendered="#{Usuario.logado}">
+        <h:dataTable value="#{RelatorioDetalhado.gridDisciplinas}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Disciplina:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmDisciplina}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Ver "/></f:facet>
+                <h:commandLink value="Ver" action="#{RelatorioDetalhado.encaminhaRelNotas()}"/>
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+    <h:panelGrid columns="1" rendered="#{not Usuario.logado}" >
+        <h:outputLabel styleClass="digita" value="Você não tem acesso a esta área."/>
+    </h:panelGrid>
+    
+</h:panelGroup>

@@ -1,0 +1,72 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+        <table border="0" cellpadding="0" cellspacing="2" width="100%" height="100%">
+            <tr><td colspan="2"><h:graphicImage name="linha.jpg" library="images" width="100%" /></td></tr>            
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Nome da categoria do critério:  "/>
+            </td>
+            <td align="left">
+            <h:inputText value="#{CategoriaCriterio.inserirCategoriaCriterio.nmCategoriaCriterio}" />
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Gênero da categoria:  "/>
+            </td>
+            <td align="left">
+             <h:selectOneMenu  value="#{CategoriaCriterio.idGeneroCategoria}">
+                <f:selectItem itemLabel="Nenhum" itemValue="0"/>
+                <f:selectItems value="#{GeneroCategoria.listaGeneroCategoria}" var="cboItensGeneroCategoria" itemValue="#{cboItensGeneroCategoria.idGeneroCategoria}" itemLabel="#{cboItensGeneroCategoria.nmGeneroCategoria}"/>
+            </h:selectOneMenu>
+            
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Categoria Pai:  "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{CategoriaCriterio.idCategoriaCriterioPai}">
+                 <f:selectItem itemLabel="Nenhum" itemValue="0"/>
+                 <f:selectItems value="#{CategoriaCriterio.listaCatCriterio}" var="cboItensCategoriaCriterio" itemValue="#{cboItensCategoriaCriterio.idCategoriaCriterio}" itemLabel="#{cboItensCategoriaCriterio.nmCategoriaCriterio}"/>
+            </h:selectOneMenu>
+            </td>
+            </tr>
+             <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Valor Máximo: "/>
+            </td>
+            <td align="left">
+            <h:inputText value="#{CategoriaCriterio.inserirCategoriaCriterio.nrValorMaximo}" />
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Penalização:"/>
+            </td>
+            <td align="left">
+            <h:selectBooleanCheckbox title="geral" value="#{CategoriaCriterio.inserirCategoriaCriterio.flErroPenalizacaoGeral}"/> 
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" colspan="2">
+            <h:commandLink id="cmdGera" styleClass="botao" action="#{CategoriaCriterio.gravaAlteracao}" value="Gravar Alteração"/>
+            </td>
+            </tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr>
+                <td colspan="2">
+            <h:outputLabel styleClass="lblMensagemDestaque" value="#{CategoriaCriterio.mensagem}" rendered="#{CategoriaCriterio.exibirMensagem}" />
+            </td>
+            </tr>
+            <tr><td colspan="2"><h:graphicImage name="linha.jpg" library="images" width="100%" /></td></tr>            
+        </table>
+
+    
+</h:panelGroup>

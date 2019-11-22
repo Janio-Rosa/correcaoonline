@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+    <!--p:imageCropper image="/resources/digitalizacoes/modelo.jpg"  /-->
+    <!--width="800px;" height="800px"-->
+
+    <!--h:graphicImage library="digitalizacoes" name="692C77_recortada.jpg" width="800px;" height="900px"/-->
+    <h:outputLabel value="#{CorrecaoController.mensNotaCriterio}" styleClass="lblBoldVermelhoMedio" id="lblNotaAtribuidaDiscursiva"  />
+    <h:panelGroup rendered="#{CorrecaoController.bolRespostaEncontrada}" id="pnlImagemCorrecaoDiscursiva" >
+        <!--p:graphicImage value="{CorrecaoController.imagemCandidatoAtual}" width="800px;" height="900px" id="imgCorrecaoDiscursiva" /-->
+        <p:panel>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="Inscrição:"/>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="#{CorrecaoController.inscricaoCandidatoAtual.nrInscricao}"/>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="Ordem:"/>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="#{CorrecaoController.inscricaoCandidatoAtual.nrOrdem}"/>
+        </p:panel>
+        <p:panel>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="Curso:"/>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="#{CorrecaoController.candidatoAtual.idCurso.nmCurso}"/>
+        </p:panel>
+    </h:panelGroup>
+</h:panelGroup>

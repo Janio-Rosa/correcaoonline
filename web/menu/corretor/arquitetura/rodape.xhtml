@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao}">
+    <h:panelGrid columns="1" style="width: 100%; margin-left: 800;" >
+        <p:commandButton value="Enviar - Finalizar Correção" action="#{CorrecaoController.gravaRespostaCandidatoAtualProximaCorrecao()}" ajax="false" type="submit" onclick="return confirm('Deseja terminar a correção atual?');" />
+    </h:panelGrid>
+
+    <h:panelGrid columns="1">
+        <h:outputLabel value="#{CorrecaoController.mensagem}" styleClass="lblBoldVermelho" id="lblErroGrave" rendered="#{CorrecaoController.exibirMensagem}" />
+    </h:panelGrid>
+    <p:panel header="Nota final do candidato, até agora: #{CorrecaoController.notaTotal}" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao }" id="pnlPontuacaoRodape">
+    </p:panel>
+
+</h:panelGroup>

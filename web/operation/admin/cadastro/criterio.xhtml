@@ -1,0 +1,96 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+        <table border="0" cellpadding="0" cellspacing="2" width="80%" height="100%" >
+            <tr><td colspan="2"><h:graphicImage name="linha.jpg" library="images" width="100%" /></td></tr>   
+             <tr class="borda">
+                <td  class="borda" align="right">
+            <h:outputLabel value="Nome do critério: "/>
+            </td>
+            <td align="left">
+            <h:inputText value="#{CriterioController.inserirCriterio.nmCriterio}" />
+            </td>
+            </tr> 
+             <tr class="borda">
+                <td  class="borda" align="right">
+            <h:outputLabel value="Descrição do Critério: "/>
+            </td>
+            <td align="left">
+            <p:editor  value="#{CriterioController.inserirCriterio.dsCriterio}" width="600" />
+            </td>
+            </tr> 
+            <tr class="borda" >
+                <td   class="borda" align="right" >
+            <h:outputLabel value="Categoria do critério: " />
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{CriterioController.idCatCriterio}">
+                <!--f:selectItem itemLabel="Nenhum" itemValue="0"/-->
+                <f:selectItems value="#{CategoriaCriterio.listaCatCriterio}" var="cboItensCatCriterio" itemValue="#{cboItensCatCriterio.idCategoriaCriterio}" itemLabel="#{cboItensCatCriterio.nmCategoriaCriterio} - #{cboItensCatCriterio.idGeneroCategoria.nmGeneroCategoria}"/>
+            </h:selectOneMenu>
+            </td>
+            </tr>
+            <tr class="borda">
+                <td  class="borda" align="right">
+            <h:outputLabel value="Disciplina: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{CriterioController.idDisciplina}">
+                <f:selectItems value="#{Disciplina.listaDisciplinas}" var="cboItensDisciplina" itemValue="#{cboItensDisciplina.idDisciplina}" itemLabel="#{cboItensDisciplina.nmDisciplina}"/>
+            </h:selectOneMenu>
+            </td>
+            </tr>
+            <tr class="borda">
+                <td  class="borda" align="right">
+            <h:outputLabel value="Questão: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{CriterioController.idQuestao}">
+                <f:selectItems value="#{QuestaoController.listaQuestoes}" var="questaoAtual" itemValue="#{questaoAtual.idQuestao}" itemLabel="#{questaoAtual.nmQuestao}"/>
+            </h:selectOneMenu>
+            </td>
+            </tr>
+             <tr class="borda">
+                <td  class="borda" align="right">
+            <h:outputLabel value="Valor : "/>
+            </td>
+            <td align="left">
+            <h:inputText maxlength="1000" value="#{CriterioController.inserirCriterio.nrValorMaximo}"  />
+            </td>
+            </tr>
+             <tr class="borda">
+                <td  class="borda" align="right">
+            <h:outputLabel value="Ordem : "/>
+            </td>
+            <td align="left">
+            <h:inputText maxlength="1000" value="#{CriterioController.inserirCriterio.nrOrdem}"  />
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Critério Negativo:"/>
+            </td>
+            <td align="left">
+            <h:selectBooleanCheckbox title="geral" value="#{CriterioController.inserirCriterio.flCriterioNegativo}"/> 
+            </td>
+            </tr>
+            <tr class="borda">
+            <td  class="borda" colspan="2">
+            <h:commandButton styleClass="botaoLegal" action="#{CriterioController.insereCriterio}" value="Insere Critério"/>
+            </td>
+            </tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr>
+                <td colspan="2">
+            <h:outputLabel id="lblMensagemErro" styleClass="lblMensagemDestaque" value="#{CriterioController.mensagem}" rendered="#{CriterioController.exibirMensagem}" />
+            </td>
+            </tr>
+            <tr><td colspan="2"><h:graphicImage name="linha.jpg" library="images" width="100%" /></td></tr>
+        </table>
+
+    
+</h:panelGroup>

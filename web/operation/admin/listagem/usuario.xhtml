@@ -1,0 +1,46 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Usuários Cadastrados:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{Usuario.gridUsuarios}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel" columnClasses="TituloTabela1"  >
+
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Nome do usuário: "/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmPessoa}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="RG:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrRg}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Usuário:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmUsuario}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Descrição:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.dsChavePublica}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Disciplina:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmDisciplina}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Alterar: "/></f:facet>
+                <h:commandLink value="Alterar" action="#{Usuario.prepararAlterar}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Ativo? "/></f:facet>
+                <h:outputLabel styleClass="digita" value="SIM" rendered="#{atual.flAtivo}"/>
+                <h:outputLabel styleClass="digita" value="NÃO" rendered="#{!atual.flAtivo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Excluir: "/></f:facet>
+                <h:commandLink value="Excluir" action="#{Usuario.apaga()}"  onclick="return confirm('Deseja excluir o usuário #{atual.nmPessoa} ?');" />
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao}">
+
+    <h:panelGrid columns="1">
+        <h:outputLabel value="#{CorrecaoController.mensagem}" styleClass="lblBoldVermelho" id="lblErroGrave" />
+    </h:panelGrid>
+    <h:panelGrid id="pnlCriteriosJaCorrigidosComLinha" columns="1">
+        
+        <ui:repeat value="#{CriterioController.criteriosJacorrigidos}" var="jacorrigido" >
+            <h:panelGrid  columns="7">
+                <h:outputLabel  value="Linha: "  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="#{jacorrigido.nrLinha}"  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="Critério: "  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="#{jacorrigido.idCriterio.nmCriterio}"  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="Valor:"  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="#{jacorrigido.nrValor} "  styleClass="lblBoldAzulPequeno"/>
+                <h:graphicImage alt="Excluir"  library="images" name="excluir.png" onmouseover="document.body.style.cursor='pointer';" onmouseout="document.body.style.cursor='auto';" >
+                    <f:ajax event="click" execute="@form" listener="#{CorrecaoController.apagaCorrecaoCriterioPorId(jacorrigido.idCriterio.idCriterio,jacorrigido.idCriterio.nmCriterio,jacorrigido.idCorrecaoCriterio)}" render="@form"/>
+                </h:graphicImage>
+            </h:panelGrid>
+        </ui:repeat>
+            
+    </h:panelGrid>
+
+</h:panelGroup>

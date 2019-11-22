@@ -1,0 +1,54 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Bancas Cadastradas:"/>
+    </h:panelGrid>
+     
+    
+    <h:panelGrid columns="2">
+        <h:outputLabel styleClass="lblBoldAzul" value="Filtrar por Curso:"/>
+        <h:selectOneMenu value="#{Banca.idCursoFiltro}" >
+            <f:ajax event="change" execute="@this" render="pnlListaBancas" listener="#{Banca.selecionouCurso()}" />
+            <f:selectItem itemValue="0" itemLabel="------ TODOS ------" />
+            <f:selectItems value="#{Curso.listaCursos}" var="cursoAtual" itemLabel="#{cursoAtual.nmCurso} - #{cursoAtual.idCurso}" itemValue="#{cursoAtual.idCurso}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <h:outputLabel styleClass="lblBoldAzul" value="Filtrar por Disciplina:"/>
+        <h:selectOneMenu value="#{Banca.idDisciplinaFiltro}" >
+            <f:ajax event="change" execute="@this" render="pnlListaBancas" listener="#{Banca.selecionouDisciplina()}" />
+            <f:selectItem itemValue="0" itemLabel="------ TODOS ------" />
+            <f:selectItems value="#{Disciplina.listaDisciplinas}" var="discipAtual" itemLabel="#{discipAtual.nmDisciplina} - #{discipAtual.idDisciplina}" itemValue="#{discipAtual.idDisciplina}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+
+    
+    
+    <h:panelGrid columns="1" id="pnlListaBancas">
+        <h:dataTable value="#{Banca.gridBancas}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel" columnClasses="TituloTabela1"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Nome da Banca:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmBanca}"/>
+            </h:column>                           
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Disciplina:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmDisciplina}"/>
+            </h:column>                           
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Curso:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmCurso} - #{atual.nmTurno} - #{atual.nmCidade}"/>
+            </h:column>                           
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Alterar:"/></f:facet>
+                <h:commandLink value="Alterar" action="#{Banca.prepararAlterar()}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Excluir : "/></f:facet>
+                <h:commandLink value="Excluir" action="#{Banca.apaga()}"  onclick="return confirm('Deseja excluir a Banca #{atual.nmBanca} ?');" />
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

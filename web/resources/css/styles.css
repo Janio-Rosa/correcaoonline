@@ -1,0 +1,1027 @@
+/* 
+    Document   : styles
+    Created on : Oct 21, 2010, 3:09:46 PM
+    Author     : Janio
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+/* Calibri, Tahoma, Arial; */
+
+body  {
+	font: 100% Calibri, Tahoma, Arial;
+	/*background-image:url(line1.jpg);*/
+        /*background: #d5eaf9;*/
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000000;
+}
+.twoColHybLtHdr #container {
+	width: 80%;  /* this will create a container 80% of the browser width */
+	background: #FFFFFF;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	border: 1px solid #000000;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+}
+
+.twoColHybLtHdr #containernoborder {
+	width: 80%;  /* this will create a container 80% of the browser width */
+	background: #FFFFFF;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	border: none;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+        padding-left: 10px;
+}
+
+.twoColHybLtHdr #header {
+	/*background: #DDDDDD;*/
+        background: lightsteelblue;
+	padding: 0 10px;  /* this padding matches the left alignment of the elements in the divs that appear beneath it. If an image is used in the #header instead of text, you may want to remove the padding. */
+}
+.twoColHybLtHdr #header h1 {
+	margin: 0; /* zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse */
+	padding: 10px 0; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
+	color: #000000;
+}
+
+/* Tips for sidebar1:
+1. Since we are working in relative units, it's best not to use padding on the sidebar. It will be added to the overall width for standards compliant browsers creating an unknown actual width.
+2. Since em units are used for the sidebar value, be aware that its width will vary with different default text sizes.
+3. Space between the side of the div and the elements within it can be created by placing a left and right margin on those elements as seen in the ".twoColHybLtHdr #sidebar1 p" rule.
+*/
+.twoColHybLtHdr #sidebar1 {
+	float: left;
+	width: 14em; /* since this element is floated, a width must be given */
+	/*background: #EBEBEB;*/ /* the background color will be displayed for the length of the content in the column, but no further */
+        background: antiquewhite;
+	padding: 15px 0; /* top and bottom padding create visual space within this div  */
+}
+.twoColHybLtHdr #sidebar1 h3, .twoColHybLtHdr #sidebar1 p {
+	margin-left: 10px; /* the left and right margin should be given to every element that will be placed in the side columns */
+	margin-right: 10px;
+}
+
+/* Tips for mainContent:
+1. The space between the mainContent and sidebar1 is created with the left margin on the mainContent div.  No matter how much content the sidebar1 div contains, the column space will remain. You can remove this left margin if you want the #mainContent div's text to fill the #sidebar1 space when the content in #sidebar1 ends.
+2. Be aware it is possible to cause float drop (the dropping of the non-floated mainContent area below the sidebar) if an element wider than it can contain is placed within the mainContent div. WIth a hybrid layout (percentage-based overall width with em-based sidebar), it may not be possible to calculate the exact width available. If the user's text size is larger than average, you will have a wider sidebar div and thus, less room in the mainContent div. You should be aware of this limitation - especially if the client is adding content with Contribute.
+3. In the Internet Explorer Conditional Comment below, the zoom property is used to give the mainContent "hasLayout." This may help avoid several IE-specific bugs.
+*/
+.twoColHybLtHdr #mainContent {
+	margin: 0 20px 0 13em; /* the right margin can be given in percentages or pixels. It creates the space down the right side of the page. */
+}
+.twoColHybLtHdr #footer {
+	padding: 0 10px; /* this padding matches the left alignment of the elements in the divs that appear above it. */
+	/*background:#DDDDDD;*/
+        background: lightsteelblue;
+}
+.twoColHybLtHdr #footer p {
+	margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+	padding: 10px 0; /* padding on this element will create space, just as the the margin would have, without the margin collapse issue */
+}
+
+/* Miscellaneous classes for reuse */
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+
+.headTitle {
+    vertical-align: middle;
+    font-family: Gill, Helvetica, sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.litleFooter {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: x-small;
+    font-weight: bold;
+    color: blue;
+    font-style: normal;
+}
+
+.middleFooter {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller;
+    font-weight: bold;
+    color: blue;
+    font-style: normal;
+}
+
+.lblBoldBig {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: large;
+    font-weight: bold;
+    color: blue;
+    font-style: normal;
+}
+
+.lblBoldBigPreto {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: large;
+    font-weight: bold;
+    color: #000000;
+    font-style: normal;
+}
+
+.lblBoldPreto {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: small;
+    font-weight: bold;
+    color: #000000;
+    font-style: normal;
+}
+
+.lblBoldPretoMedio {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    font-style: normal;
+}
+
+.lblBold {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller;
+    font-weight: bolder;
+    color: black;
+    font-style: normal;
+    /*clear: left;
+    float: left;*/
+    width: 7em; /* or whatever length suits */
+}
+
+.lblBoldPequeno {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 9px;
+    font-weight: bolder;
+    color: black;
+    font-style: normal;
+    /*clear: left;
+    float: left;*/
+    width: 7em; /* or whatever length suits */
+}
+.lblBoldPequenoVermelho {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 9px;
+    font-weight: bolder;
+    color: brown;
+    font-style: normal;
+    /*clear: left;
+    float: left;*/
+    width: 7em; /* or whatever length suits */
+}
+.lblBoldVermelho {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 12px;
+    font-weight: bolder;
+    color: brown;
+    font-style: normal;
+    width: 7em; 
+}
+.lblBoldVermelhoMedio {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 14px;
+    font-weight: bolder;
+    color: brown;
+    font-style: normal;
+    width: 7em; 
+}
+
+.lblBoldAzul {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller;
+    font-weight: bolder;
+    color: blue;
+    font-style: normal;
+    text-align: left;
+}
+
+.lblBoldAzulCriterio {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 12px;
+    font-weight: bolder;
+    color: blue;
+    font-style: normal;
+    text-align: left;
+}
+
+.lblBoldVerdeCriterio {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 12px;
+    font-weight: bold;
+    color: green;
+    font-style: normal;
+    text-align: left;
+}
+
+.lblBoldCriterioNotaDada {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: medium;
+    font-weight: bolder;
+    color: deeppink;
+    font-style: normal;
+    text-align: left;
+}
+
+.lblBoldAzulGrande {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 18px;
+    font-weight: bolder;
+    color: blue;
+    font-style: normal;
+}
+
+.lblBoldAzulMedio {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 15px;
+    font-weight: bolder; color: blue;
+    font-style: normal; width: 7em; 
+}
+
+.lblBoldAzulMedioParaComboBox {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 15px;
+    font-weight: bolder; color: blue;
+    font-style: normal; width: 7em; 
+    width: 200px;
+}
+
+.lblBoldAzulPequeno {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 10px;
+    font-weight: bolder; color: blue;
+    font-style: normal; width: 7em; 
+}
+
+.text {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller;
+    font-weight: bold;
+    color: black;
+    font-style: normal;
+}
+
+.divCenter {
+    margin-right:auto;
+    margin-left:auto;
+    width:100%;
+    padding: 10px;
+}
+
+.divForm {
+    margin-right: auto;
+    margin-left: auto;
+    /*width:300px;*/
+    padding: 5px;
+}
+
+.button {
+    font-family: Gill, Helvetica;
+    font-size: medium;
+    font-weight: normal;
+    color: darkblue;
+    font-style: normal;
+}
+
+.botaoPequeno {
+    font-family: Gill, Helvetica;
+    font-size: smaller;
+    font-weight: normal;
+    color: darkblue;
+    font-style: normal;
+}
+
+.commandLink {
+    font-family: Gill, Helvetica;
+    font-size: medium;
+    font-weight: normal;
+    color: blue;
+    font-style: normal;
+}
+
+.linkGravar {
+    background-image: '/resources/images/gravar.png';
+    text-decoration: none;
+    background: antiquewhite;
+    border: 1px solid #000000;
+    padding-top: 2px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px;
+}
+
+.linkPequeno {
+    text-decoration: none;
+    background: antiquewhite;
+    border: 1px solid #000000;
+    padding-top: 3px; padding-bottom: 3px; padding-left: 2px; padding-right: 2px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.linkVoltar {
+    background-image: '/resources/images/gravar.png';
+    text-decoration: none;
+    background: antiquewhite;
+    border: 1px solid #000000;
+    padding-top: 2px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px;
+}
+.linkLimpar {
+    background-image: '/resources/images/gravar.png';
+    text-decoration: none;
+    background: antiquewhite;
+    border: 1px solid #000000;
+    padding-top: 2px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px;
+}
+.fundoAzul {
+    background: #d5eaf9;
+    text-decoration: none;
+}
+.fundoCinza {
+    /*background: #BBBBBB;*/
+    background-image: url("#{resource['images:bg6.png']}");
+    background-repeat: repeat-x;
+    text-decoration: none;
+}
+
+.fundoCabecalho {
+    /*background: #BBBBBB;*/
+    height: 62px;
+    background-image: url("#{resource['images:topo_bg.jpg']}");
+    background-repeat: repeat-x;
+    text-decoration: none;
+}
+
+.normalLabel {
+	clear: left;
+	float: left;
+	width: 100%; /* or whatever length suits */
+}
+
+.botaoLegal {
+    border: 1px solid #000000;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.lblMensagemDestaque {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: medium;
+    font-weight: bolder;
+    color: #e33b06;
+    font-style: normal;
+    /*clear: left;
+    float: left;*/
+    width: 7em; /* or whatever length suits */
+}
+
+.lblMensagemDestaquePequena {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller;
+    font-weight: bolder;
+    color: #e33b06;
+    font-style: normal;
+    /*clear: left;
+    float: left;*/
+    width: 7em; /* or whatever length suits */
+}
+
+.tabelaListagem {
+    border-collapse: collapse;
+    border-right: black solid thin;
+    border-left: black solid  thin;
+    border-top: black solid thin;
+    border-bottom: black solid thin;
+}
+
+/*background:none repeat scroll 0 0 #000000;*/
+.order-table-odd-row{
+	text-align:center;
+	border-top: 1px solid #000000;
+        background: repeat scroll 0 0 bisque;
+}
+
+.order-table-even-row{
+	text-align:center;
+	background: none repeat scroll 0 0 cornsilk;
+	border-top: 1px solid #000000;
+}
+.order-table-even-row td{
+    border-left: black dotted thin;
+    border-right: black dotted thin;
+}
+.order-table-odd-row td{
+    border-left: black dotted thin;
+    border-right: black dotted thin;
+}
+
+.linhasimpares{
+	text-align:center;
+	border-top:  none;
+        background: repeat scroll 0 0 bisque;
+}
+
+.linhaspares{
+	text-align:center;
+	background: none repeat scroll 0 0 cornsilk;
+	border-top: none;
+}
+.linhasimparesSemFormatacao{
+    text-align:left; border-top:  none;
+}
+
+.linhasparesSemFormatacao{
+    text-align:left; border-top: none;
+}
+
+.txtTextoPequeno {
+    text-decoration: none;
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.txtTextoPequenoNormal {
+    text-decoration: none;
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+
+.txtTextoAssinatura {
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: bold;
+    border-top-style: inset; border-top-color: #000000; border-top-width: 1px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.lblBoldErro {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller;
+    font-weight: bolder;
+    color: #e33b06;
+    font-style: normal;
+    /*clear: left;
+    float: left;*/
+    width: 7em; /* or whatever length suits */
+}
+
+
+.lblTituloHeader {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: large;
+    font-weight: bolder;
+    color: #eeab36;
+    font-style: normal;
+    /*clear: left;
+    float: left;*/
+    width: 240px;
+}
+
+.TituloTabela {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller;
+    font-weight: bolder;
+    /*color: #eeab36;*/
+
+    /*color: blue;*/
+    font-style: normal;
+    /*background: darkblue;*/
+    background: #BBBBBB;
+    color: black;
+    width: 7em; /* or whatever length suits */
+    height: 1em;
+}
+
+.TituloTabelaSemTamanho {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller;
+    font-weight: bolder;
+    font-style: normal;
+    background: #BBBBBB;
+    color: black;
+    height: 1em;
+}
+
+.TituloTabelaSemFormatacao {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 15px;
+    font-weight: bolder;
+    font-style: normal;
+    /*background: #BBBBBB;*/
+    color: black;
+    height: 1em;
+}
+
+.TituloTabelaVariavel {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller;
+    font-weight: bolder;
+    font-style: normal;
+    background: #BBBBBB;
+    color: black;
+    height: 1em;
+    border-bottom: none;
+    border-top: none;
+    border-left:  none;
+    border-right: none;
+}
+
+.TituloTabelaPequena {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller; font-weight: bolder;
+    font-style: normal; background: #BBBBBB;
+    color: black; height: 1em;
+    border-bottom: none; border-top: none;
+    border-left:  none; border-right: none;
+    padding: 0px; margin: 0px;
+}
+
+.LinhaTabelaPequena {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 9px;
+    font-weight: bold; font-style: normal;
+    background: #BBBBBB; color: black;
+    border-bottom: none; border-top: none;
+    border-left:  none; border-right: none;
+    padding: 0px; margin: 0px;
+}
+
+.ColunaTabelaPequena {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 11px;
+    font-weight: bold; font-style: normal;
+    background: #BBBBBB; color: blue;
+    border-bottom: none; border-top: none;
+    border-left:  none; border-right: none;
+    padding: 0px; margin: 0px;
+}
+
+.TituloTabela1 {
+    width: 10em; 
+    
+}
+
+.TituloTabelaPequeno {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: smaller;
+    font-weight: bolder;
+    /*color: #eeab36;*/
+
+    /*color: blue;*/
+    font-style: normal;
+    /*background: darkblue;*/
+    background: #BBBBBB;
+    color: black;
+    height: 1em;
+    border: solid black;
+}
+
+.lblDestaquePequenoPreto {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: x-small;
+    font-weight: bold;
+    color: #000000;
+    font-style: normal;
+}
+
+.lblAmarelo {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: medium;
+    font-weight: bold;
+    color: gold;
+    font-style: normal;
+}
+
+.lblLaranja {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: small;
+    font-weight: bold;
+    color: #eeab36;
+    font-style: normal;
+}
+.linkGrande {
+    text-decoration: none;
+    background: antiquewhite;
+    border: 1px solid #000000;
+    padding-top: 5px; padding-bottom: 5px; padding-left: 4px; padding-right: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.alinhaForm {
+    direction: ltr;
+    text-align: left;
+}
+
+.alinhaFormComBorda {
+    direction: ltr;
+    text-align: left;
+    border-width: 1px;
+    border-spacing: 0px;
+    border-style: solid;
+    border-color: blue;
+    border-collapse: separate;
+    background-color: white;    
+
+}
+
+
+.alinhaFormCriterios {
+    direction: ltr;
+    text-align: center;
+    width: 800px;
+}
+
+.correcaoRed1{
+    width: 60%;
+    text-align: right;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 4px;
+}
+
+.correcaoRed2{
+    width: 40%;
+    text-align: left;
+    padding-left: 4px;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+    
+}
+
+.ui-widget,
+.ui-widget .ui-widget {
+   font-size: 13px !important;
+}
+
+#Menu ul {
+text-align: left  !important;
+padding: 0; display: block;
+
+margin: 0; list-style-type: none;
+
+}
+
+/*width: 140px;*/
+#Menu ul li {
+padding: 0; margin: 0;
+font-size: 11px; 
+}
+
+#Menu ul li a {
+
+padding: 1px 0 1px 1px; margin: 0;
+
+border: 1px solid #E5E5E5; display: block;
+
+background: #f5f5f5; text-decoration: none;
+
+color: #000;
+
+}
+
+#Menu ul li a:hover {
+
+background: #FAFAFA; border: 1px solid #D5D5D5;
+
+padding: 1px 0 1px 1px; color: #666;
+
+}
+
+/*width: 140px;*/
+#Menu ul li ol {
+
+padding: 0; margin: 0;
+font-size: 11px; 
+
+}
+
+#Menu ul li ol a {
+
+padding: 1px 0 1px 1px; margin: 0;
+
+border: 1px solid #e1f3e3; display: block;
+
+background: #f1fdf3; text-decoration: none;
+
+color: #333;
+
+}
+
+#Menu ul li ol a:hover {
+
+background: #fefefe; border: 1px solid #79a7e2;
+
+padding: 1px 0 1px 1px; color: #000;
+
+}
+
+.lblCriterioPequeno {
+    border: 1px solid #000000;
+    font-size: 6px; 
+    font-weight: bold;
+    width: 300px !important;
+}
+
+.lblBotaoLinhas {
+    border: 1px solid #000000; 
+    font-size: 12px; 
+    font-weight: bold; 
+    padding-bottom: 0px; 
+    padding-top: 0px; 
+    padding-right: 0px; 
+    padding-left: 0px; 
+    height: 22px; 
+}
+
+.lblBotaoLinhas2 {
+    border: 1px solid #000000;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 0.2px !important;;
+    padding-top: 0.2px !important;;
+    padding-left: 0px !important;;
+    width: 32px;
+    height: 23px;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    text-align: left;
+}
+
+.lblBotaoLinhas2 .ui-button-text {
+    padding: 0px 0px !important;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+}
+
+.lblBotaoLinhasMarcacao {
+    background: url("#{resource['images:barra_laranjada.png']}");
+    border: 1px solid #000000;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 0.2px !important;;
+    padding-top: 0.2px !important;;
+    padding-left: 0px !important;;
+    width: 32px;
+    height: 23px;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+    text-align: left;
+}
+.lblBotaoLinhasMarcacao .ui-button-text {
+    padding: 0px 0px !important;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+}
+
+.lblBotaoLinhasSelecionada {
+    background: url("#{resource['images:barra_amarela.png']}");
+    border: 1px solid #000000;
+    background-color: gold !important;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 0px !important;;
+    padding-top: 0px !important;;
+    padding-left: 0px !important;;
+    width: 32px;
+    height: 22px;
+    margin-left: 0px !important;
+    text-align: left;
+}
+.lblBotaoLinhasSelecionada .ui-button-text {
+    padding: 0px 0px !important;
+    margin-left: 0px !important;
+    margin-top: 0px !important;
+}
+
+.txtCentraliza {
+    height: 30px;
+    text-align: center;
+    vertical-align: top;
+}
+
+/*width: 15em; */
+.lblMenuBold {
+    font-family: Arial,  Calibri, Tahoma;
+    font-size: 11px;
+    font-weight: bolder; color: blue;
+    font-style: normal; 
+    text-align: left ;
+}
+
+.alinhaMenuOl {
+    text-align: left !important; padding-left: 0 !important;
+}
+
+.lblBegePequeno {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 12px;
+    font-weight: bold;
+    color: #eeab36;
+    font-style: normal;
+}
+
+.lblBoldLaranjaPequeno {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 12px;
+    font-weight: bold;
+    color: chocolate;
+    font-style: normal;
+}
+
+
+.pnlCabecalhoCorrecaoCol1 {
+    width: 75%;
+}
+.pnlCabecalhoCorrecaoCol2{
+    width: 25%;
+}
+.pnlCabecalhoCorrecao{
+    width: 100%;
+}
+
+.lblPanelDestaque {
+    background-color: #cb842f;
+    color: #ffffbb;
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.imgRetanguloDestaque {
+    background-color: #cb842f;
+    /*background-color: #eee5d6;*/
+    width: 700px;
+    heigth: 2px;
+}
+
+.tabelaComBorda {
+	border-width: 1px;
+	border-spacing: 1px;
+	border-style: solid;
+	border-color: green;
+	border-collapse: collapse;
+	background-color: white;
+}
+.tabelaComBorda th {
+	border-width: 1px;
+	padding: 1px;
+	border-style: solid;
+	border-color: green;
+	background-color: white;
+	-moz-border-radius:'' ;
+}
+.tabelaComBorda td {
+	border-width: 1px;
+	padding: 1px;
+	border-style: solid;
+	border-color: green;
+	background-color: white;
+	-moz-border-radius:'' ;
+}
+
+.bordaSimples {
+	border-width: 1px;
+	border-spacing: 1px;
+	border-style: solid;
+	/*border-color: green;*/
+        border-color: darkblue;
+	border-collapse: collapse;
+	background-color: white;
+}
+
+.colunaCentralizada {
+    text-align: center;
+}
+
+.LinhaPar {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 10px; text-align: left;
+    font-weight: bold; font-style: normal;
+    background: #BBBBBB; color: black;
+    border-bottom: none; border-top: none;
+    border-left:  none; border-right: none;
+    padding: 0px; margin: 0px;
+}
+
+.LinhaParNota {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 14px; text-align: left;
+    font-weight: bolder; font-style: normal;
+    background: #BBBBBB; color: black;
+    border-bottom: none; border-top: none;
+    border-left:  none; border-right: none;
+    padding: 0px; margin: 0px;
+}
+
+.LinhaImpar {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 10px; text-align: left;
+    font-weight: bold; font-style: normal;
+    background: bisque; color: black;
+    border-bottom: none; border-top: none;
+    border-left:  none; border-right: none;
+    padding: 0px; margin: 0px;
+}
+
+.LinhaImparNota {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 14px; text-align: left;
+    font-weight: bolder; font-style: normal;
+    background: bisque; color: black;
+    border-bottom: none; border-top: none;
+    border-left:  none; border-right: none;
+    padding: 0px; margin: 0px;
+    color: blue;
+}
+
+.cssPnlCriterios {
+    height: 300px;
+    overflow: scroll;
+}
+
+.colunaEsquerda{
+    text-align: left;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 4px;
+}
+
+.colunaDireita{
+    text-align: right;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 4px;
+}
+
+.tabelaCemPorCento{
+    width: 100%;
+    text-align: right;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 4px;
+}
+
+.colunaEsquerda {
+    text-align: left;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 4px;
+}
+
+.colunaDireitaDestaque {
+    text-align: right;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 4px;
+    color: blue;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.colunaEsquerdaDestaque {
+    text-align: right;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-top: 0;
+    padding-right: 4px;
+    color: black;
+    font-size: 10px !important;
+    font-weight: bold;
+}
+
+.TituloTabelaNota {
+    font-family: Calibri, Tahoma, Arial;
+    font-size: 10px; font-weight: bolder;
+    font-style: normal; background: #BBBBBB;
+    color: black; height: 1em;
+    border-bottom: 2px; border-top: none;
+    border-left:  none; border-right: none;
+    padding: 0px; margin: 0px;
+    
+}

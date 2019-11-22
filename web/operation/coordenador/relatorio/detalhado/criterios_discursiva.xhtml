@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:panelGroup xmlns:h="http://java.sun.com/jsf/html" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core" >
+
+    <!--h:panelGrid id="pnlCriteriosJaCorrigidosComLinha" columns="1">
+        <ui:repeat value="{RelatorioDetalhado.criteriosJacorrigidos}" var="jacorrigido" >
+            <h:panelGrid   columns="7">
+                <h:outputLabel value="Linha: "  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="{jacorrigido.nrLinha}"  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="Critério: "  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="{jacorrigido.idCriterio.nmCriterio}"  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="Valor:"  styleClass="lblBoldAzulPequeno"/>
+                <h:outputLabel value="{jacorrigido.nrValor} "  styleClass="lblBoldAzulPequeno"/>
+            </h:panelGrid>
+        </ui:repeat>
+    </h:panelGrid-->
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Prova: " styleClass="lblBoldVermelhoMedio" />
+        <h:outputLabel value="#{RelatorioDetalhado.correcaoSelecionada.idResposta.idResposta}" styleClass="lblBoldAzul"  />
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Corretor: " styleClass="lblBoldVermelhoMedio" />
+        <h:outputLabel value="#{RelatorioDetalhado.colaboradorCorrecaoSelecionada.nrCpf.nmPessoa}" styleClass="lblBoldAzul"  />
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Correção: " styleClass="lblBoldVermelhoMedio" />
+        <h:outputLabel value="#{RelatorioDetalhado.correcaoSelecionada.idTipoCorrecao.nmTipoCorrecao}" styleClass="lblBoldAzul"  />
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <h:outputLabel value="Nota: " styleClass="lblBoldAzulMedio" />
+        <h:outputLabel value="#{RelatorioDetalhado.correcaoSelecionada.nrNota}" styleClass="lblBoldAzul"  >
+            <f:convertNumber maxFractionDigits="2" />
+        </h:outputLabel>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{RelatorioDetalhado.categoriasCorrecao}" var="atual2" border="0" headerClass="TituloTabelaVariavel" rowClasses="linhasimpares, linhaspares" >
+            <!--h:column>
+                <f:facet name="header"><h:outputLabel  value="Categoria:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="{atual2.nmCategoriaCriterio}"/>
+            </h:column-->
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Nota Total:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual2.nrPerdaTotal}"><f:convertNumber maxFractionDigits="2" /></h:outputLabel>
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{RelatorioDetalhado.criteriosJacorrigidos}" var="atual" border="1" headerClass="TituloTabelaPequena" >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Gabarito:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmCriterio} - #{atual.dsCriterio}" escape="false"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Nota:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrValor}"><f:convertNumber maxFractionDigits="2" /></h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Justificativa:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.dsJustificativa}" escape="false"/>
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

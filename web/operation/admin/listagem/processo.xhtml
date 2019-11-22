@@ -1,0 +1,37 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Processos Cadastrados:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+
+        <h:dataTable value="#{ProcessoSeletivo.gridProcessos}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel" columnClasses="TituloTabela1"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Processo Seletivo:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmProcesso}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Validade de: "/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.dtValidadeInicial}" >
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"  timeZone="America/Sao_Paulo" locale="pt,BR"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="até: "/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.dtValidadeFinal}" >
+                    <f:convertDateTime type="date" pattern="dd/MM/yyyy"  timeZone="America/Sao_Paulo" locale="pt,BR"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Alterar: "/></f:facet>
+                <h:commandLink value="Alterar" action="#{ProcessoSeletivo.prepararAlterar()}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Excluir: "/></f:facet>
+                <h:commandLink value="Excluir" action="#{ProcessoSeletivo.apaga()}" onclick="return confirm('Deseja apagar o processo #{atual.nmProcesso}?');" />
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

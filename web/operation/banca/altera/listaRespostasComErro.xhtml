@@ -1,0 +1,27 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core">
+    <p:panel header="Respostas com erro" >
+        <h:dataTable value="#{RespostaControllerBanca.listaImagensComErro}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel" columnClasses="TituloTabela1" rendered="#{RespostaControllerBanca.existemImagensComErro}"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Código:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.idResposta.longValue()}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Disciplina:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmDisciplina}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Processo Seletivo:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmCurso}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Alterar: "/></f:facet>
+                <h:commandLink value="Alterar" action="#{RespostaControllerBanca.consultaResposta(atual.idResposta.longValue())}"/>
+            </h:column>
+        </h:dataTable>
+        <h:outputLabel value="Não existem provas com erro enviadas para o coordenador até agora." rendered="#{!RespostaControllerBanca.existemImagensComErro}" styleClass="lblBoldVermelhoMedio" />
+    </p:panel>
+</h:panelGroup>

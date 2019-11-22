@@ -1,0 +1,60 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Processos Seletivos:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+
+        <h:dataTable value="#{RelatorioDetalhado.gridDiscrepanciaDetalhado}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel"   >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Questão:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrQuestao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Corretor 1:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmCorretor1}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Nota 1:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrNota1}">
+                    <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Corretor 2:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmCorretor2}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Nota 2:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrNota2}">
+                    <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Diferença:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrDiferenca}">
+                    <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Nota da discrepância:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrNotaDiscrepancia}">
+                    <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+                </h:outputLabel>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Mandadr para Discrepancia"/></f:facet>
+                <h:commandLink value="Voltar para Discrepancia" action="#{RelatorioDetalhado.mandarDiscrepancia(atual.idResposta)}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Código: "/></f:facet>
+                <h:outputLabel styleClass="digita" />
+                <h:commandLink value="#{atual.idResposta}" action="#{RelatorioDetalhado.consultaCorrecaoDetalhadaDiscrepancia(atual.idResposta)}" />
+            </h:column>
+
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

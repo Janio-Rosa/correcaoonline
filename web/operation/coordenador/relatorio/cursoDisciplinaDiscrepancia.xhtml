@@ -1,0 +1,25 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+     <h:panelGrid columns="2">
+        <h:outputLabel styleClass="lblBoldAzul" value="Selecionar Disciplina:"/>
+        <h:selectOneMenu value="#{RelatorioDetalhado.idDisciplina}" >
+           
+            <f:selectItem itemValue="" itemLabel="--------" />
+            <f:selectItems value="#{RelatorioDetalhado.listaDisciplinas}" var="disciplinaAtual" itemLabel="#{disciplinaAtual.nmDisciplina}" itemValue="#{disciplinaAtual.idDisciplina}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <h:outputLabel styleClass="lblBoldAzul" value="Selecionar Curso:"/>
+        <h:selectOneMenu value="#{RelatorioDetalhado.idCurso}" >
+            <f:selectItem itemValue="0" itemLabel="--------" />
+            <f:selectItems value="#{RelatorioDetalhado.listaCursos}" var="cursoAtual" itemLabel="#{cursoAtual.nmCurso}" itemValue="#{cursoAtual.idCurso.intValue()}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:panelGrid>
+        <h:commandButton value="OK" action="#{RelatorioDetalhado.encaminhaRelConfereDiscrepancia}"/>
+    </h:panelGrid>
+    
+</h:panelGroup>

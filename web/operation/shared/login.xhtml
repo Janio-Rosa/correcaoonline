@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <h:outputScript library="js" name="form.js" target="head" />
+    <h:form prependId="false">
+	<table border="0" cellpadding="2" cellspacing="2" width="300px" bordercolor="#000000" align="center">
+             
+            <tr>
+                <td class="rotulo"><h:outputLabel styleClass="lblBoldPretoMedio" value="Usuário: " for="txtLogin"/></td>
+                <td>
+                <h:inputText label="Nome de Usuário" styleClass="text"  id="txtLogin" value="#{Usuario.usuario.nmUsuario}" required="true" requiredMessage="É necessário digitar o usuário" >
+                        <f:validateLength minimum="5" />
+                    </h:inputText>
+                </td>
+            </tr>
+            <tr>
+                <td class="rotulo"><h:outputLabel  styleClass="lblBoldPretoMedio" value="Senha: " for="txtPassword"/></td>
+                <td>
+                <h:inputSecret label="Senha" styleClass="text"  id="txtPassword" value="#{Usuario.usuario.nmSenha}" required="true" requiredMessage="É necessário digitar uma senha" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><h:commandButton styleClass="botaoLegal" type="submit" value=" Entrar " action="#{Usuario.doLogin}" /></td>
+            </tr>
+            <tr>
+                
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <h:outputLabel styleClass="lblBoldErro" value="#{Usuario.mensagem}" rendered="#{Usuario.exibirMensagem}"/>
+                </td>
+            </tr>
+
+	</table>
+    </h:form>
+    <script>
+        document.getElementById('txtLogin').focus();
+    </script>
+</ui:composition>

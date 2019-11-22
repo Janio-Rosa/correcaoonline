@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core">
+    <p:panel header="Nota final do candidato, até agora: #{CorrecaoController.notaTotal}" rendered="#{!CorrecaoController.erroBuscarInformacoesProibirCorrecao }" id="pnlPontuacaoParcial">
+        <!--h:panelGrid columns="1" >
+            <ui:repeat value="{CorrecaoController.listaRespostasQuestoes}" var="respostaAtual" >
+                <br/>
+                <h:panelGroup >
+                    <h:outputLabel styleClass="lblBoldAzulCriterio" value="Questão: {respostaAtual.nrQuestao} - Nota: {respostaAtual.nrNotaFinal}">
+
+                        <p:ajax listener="{CorrecaoController.consultaOutraQuestaoCandidatoAtual(respostaAtual.idResposta)}" event="click" 
+                                update="detalhaQuestao" oncomplete="detalheDialogo.show();"/>
+                    </h:outputLabel>
+                </h:panelGroup>
+            </ui:repeat>
+        </h:panelGrid-->
+            <p:commandButton value="Avaliar outro candidato." action="#{InscricaoController.chamaTelaSelecaoInscricao()}" ajax="false" type="submit" onkeyup="semEnter(event);" />
+            <p:commandButton value="Enviar - Finalizar Correção" action="#{CorrecaoController.gravaRespostaCandidatoAtualProximaCorrecao()}" ajax="false" type="submit" onclick="return confirm('Deseja terminar a correção atual?');" />
+
+            <!--p:dialog id="dialogoTeste" header="Questões" widgetVar="detalheDialogo" width="1300"  height="800" modal="true"   >
+                <p:commandButton  value="Fechar" onclick="detalheDialogo.hide();" type="button"/><br/>
+                <h:outputLabel value="Questão 1: " styleClass="lblBoldVermelhoMedio" /><br/>
+                <h:outputLabel value="Questão 2: " styleClass="lblBoldVermelhoMedio"/><br/>
+                <h:outputLabel value="Questão 3: " styleClass="lblBoldVermelhoMedio"/><br/>
+                <p:commandButton value="Fechar" onclick="detalheDialogo.hide();" type="button"/>
+            </p:dialog-->
+    </p:panel>
+</h:panelGroup>

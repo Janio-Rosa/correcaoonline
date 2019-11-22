@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui"
+              xmlns:f="http://java.sun.com/jsf/core">
+    <p:panel header="#{CriterioController.categoriaSelecionada.nmCategoriaCriterio}" id="pnlCriteriosDiscursiva" >
+        <!--
+        ******************************************************************************************************************************************************
+        ******************************************************************************************************************************************************
+        NÃO ESTÁ SENDO USADA - Página substituida pelo menu/discursiva/categoria_criterio.xhtml, devido aos ids que não eram encontrados para o uso do AJAX
+        ******************************************************************************************************************************************************
+        ******************************************************************************************************************************************************
+        -->
+        <h:panelGrid columns="2" styleClass="alinhaForm" columnClasses="correcaoRed1, correcaoRed2" >
+            
+            <ui:repeat value="#{CriterioController.listaCriterios}" var="criterioatual" >
+
+                <h:outputLabel value="#{criterioatual.nmCriterio}: "/>
+                <p:inputText value="#{CorrecaoController.correcaoCriterioAtual.nrValor}" >
+                    <p:ajax event="change" listener="#{CorrecaoController.corrigeCriterio(criterioatual.idCriterio)}" update="lblNotaAtribuida"  >
+                        <f:setPropertyActionListener target="#{CorrecaoController.correcaoCriterioAtual.idCriterio}" value="#{criterioatual.idCriterio}"/>
+                    </p:ajax>
+                </p:inputText>
+                
+                <p:commandButton value="#{criterioatual.nmCriterio}" action="#{CorrecaoController.corrigeCriterio(criterioatual.idCriterio)}"  ajax="true" update="lblNotaAtribuidaDiscursiva" >
+                    <f:setPropertyActionListener target="#{CorrecaoController.correcaoCriterioAtual.idCriterio.idCriterio}" value="#{criterioatual.idCriterio}"/>
+                    <f:setPropertyActionListener target="#{CorrecaoController.correcaoCriterioAtual.nrValor}" value="#{criterioatual.nrValorMaximo}"/>
+                </p:commandButton>
+                
+        </ui:repeat>
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <h:outputLabel value="#{CorrecaoController.mensNotaAtribuida}" styleClass="lblBoldVermelho" id="lblNotaAtribuidaDiscursiva" />
+        </h:panelGrid>
+
+    </p:panel>
+</h:panelGroup>

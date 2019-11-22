@@ -1,0 +1,28 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Categorias dos Critérios Cadastrados:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{CategoriaCriterio.gridCategoriaCriterios}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel" columnClasses="TituloTabela1"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Categoria do Critério:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmCategoriaCriterio}"/>
+            </h:column>
+             <h:column>
+                <f:facet name="header"><h:outputLabel  value="Valor Máximo:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrValorMaximo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Alterar: "/></f:facet>
+                <h:commandLink value="Alterar" action="#{CategoriaCriterio.prepararAlterar}"/>
+            </h:column>
+            <!--<h:column>
+                <f:facet name="header"><h:outputLabel value="Excluir : "/></f:facet>
+                <h:commandLink value="Excluir" action="#{CategoriaCriterio.apaga}"  onclick="return confirm('Deseja excluir a categoria do critério #{atual.nmCategoriaCriterio} ?');" />
+            </h:column>-->
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

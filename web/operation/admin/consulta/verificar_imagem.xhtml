@@ -1,0 +1,41 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+    <p:panel id="pnlVerificaImagem">
+        <h:panelGrid columns="3" cellpadding="10" cellspacing="10" >
+            <p:commandButton value="Próxima imagem" action="#{RespostaImagemController.consultaProximaImagem()}" ajax="false" type="submit"  />
+            <p:commandButton value="Resposta em branco" action="#{RespostaImagemController.gravaRespostaEmBranco()}" ajax="false" type="submit"  />
+            <p:commandButton value="Imagem com erro" action="#{RespostaImagemController.gravaErroImagemAtual()}" ajax="false" type="submit"  />
+        </h:panelGrid>
+        <h:panelGrid columns="12">
+            <h:outputLabel value="Curso:" styleClass="lblBoldAzulMedio" />
+            <h:outputLabel value=" #{RespostaImagemController.respostaAtual.idResposta.idCurso.nmCurso}"/>
+            <h:outputLabel value="Processo: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value=" #{RespostaImagemController.respostaAtual.idResposta.idProcesso.nmProcesso}"/>
+            <h:outputLabel value="Disciplina: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value=" #{RespostaImagemController.respostaAtual.idResposta.idDisciplina.nmDisciplina }"/>
+            <h:outputLabel value="Questão: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value=" #{RespostaImagemController.respostaAtual.idResposta.nrQuestao}"/>
+            <h:outputLabel value="Inscrição: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value=" #{RespostaImagemController.inscricaoCandidatoAtual.nrInscricao}"/>
+        </h:panelGrid>
+        <h:panelGrid columns="4">
+            <h:outputLabel value="Arquivo importação: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value="D#{RespostaImagemController.respostaAtual.idResposta.idDisciplina.idDisciplina}Q#{RespostaImagemController.respostaAtual.idResposta.nrQuestao}I#{RespostaImagemController.inscricaoCandidatoAtual.nrInscricao}"/>
+            <h:outputLabel value="Arquivo divulgação: " styleClass="lblBoldAzulMedio"/>
+            <h:outputLabel value="D#{RespostaImagemController.respostaAtual.idResposta.idDisciplina.idDisciplina}Q#{RespostaImagemController.respostaAtual.idResposta.nrQuestao}_#{RespostaImagemController.inscricaoCandidatoAtual.nmArquivo}"/>
+        </h:panelGrid>
+
+        <h:panelGrid columns="1">
+            <p:graphicImage value="#{RespostaImagemController.imagemCandidatoAtual}" width="800px;" height="900px" id="imgVerificaImagem" />
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <h:outputLabel styleClass="lblMensagemDestaque" value="#{RespostaImagemController.mensagem}" rendered="#{RespostaImagemController.exibirMensagem}" id="lblMensagemErroVerificador"/>
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <h:graphicImage name="linha.jpg" library="images" width="100%" />        
+        </h:panelGrid>
+    </p:panel>
+
+</h:panelGroup>

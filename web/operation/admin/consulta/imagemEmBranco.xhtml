@@ -1,0 +1,27 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+    <p:panel id="pnlVerificaImagem">
+        <h:panelGrid columns="2" cellpadding="10" cellspacing="10" >
+            <p:commandButton value="Próxima imagem" action="#{RespostaImagemController.consultaProximaImagemEmBranco()}" ajax="false" type="submit"  />
+            <p:commandButton value="Imagem com erro" action="#{RespostaImagemController.gravaErroImagemAtualChecagemProvasEmBranco()}" ajax="false" type="submit"  />
+        </h:panelGrid>
+        <h:panelGrid columns="3">
+            <h:outputLabel value="Curso: #{RespostaImagemController.respostaAtual.idResposta.idCurso.nmCurso}"/>
+            <h:outputLabel value="Processo: #{RespostaImagemController.respostaAtual.idResposta.idProcesso.nmProcesso}"/>
+            <h:outputLabel value="Disciplina: #{RespostaImagemController.respostaAtual.idResposta.idDisciplina.nmDisciplina }"/>
+        </h:panelGrid>
+
+        <h:panelGrid columns="1">
+            <p:graphicImage value="#{RespostaImagemController.imagemCandidatoAtual}" width="800px;" height="900px" id="imgVerificaImagem" />
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <h:outputLabel styleClass="lblMensagemDestaque" value="#{RespostaImagemController.mensagem}" rendered="#{RespostaImagemController.exibirMensagem}" id="lblMensagemErroVerificador"/>
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <h:graphicImage name="linha.jpg" library="images" width="100%" />        
+        </h:panelGrid>
+    </p:panel>
+
+</h:panelGroup>

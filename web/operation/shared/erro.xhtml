@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <h:outputScript library="js" name="form.js" target="head" />
+    <h:form prependId="false">
+	<table border="0" cellpadding="2" cellspacing="2" width="300px" bordercolor="#000000" align="center">
+            <tr>
+                <td colspan="2" align="center">
+                    <h:outputLabel styleClass="lblBoldErro" value="Erro ao tentar acessar esta página. Entre em contato com o setor de Tecnologia da DIRPS." />
+                </td>
+            </tr>
+	</table>
+    </h:form>
+    <script>
+        document.location.href='/correcao/view/geral/login.xhtml';
+    </script>    
+</ui:composition>

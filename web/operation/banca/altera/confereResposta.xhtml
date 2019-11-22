@@ -1,0 +1,30 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+    <p:panel id="pnlConsultaImagem">
+        <h:panelGrid columns="4">
+            <p:commandButton value="Resposta OK - Sem erro" action="#{RespostaControllerBanca.gravaRespostaOKSemErro()}" ajax="false" type="submit" onclick="return confirm('Deseja enviar a resposta para os corretores?')"  />
+            <p:commandButton value="Desidentificar - parte superior" action="#{RespostaControllerBanca.desidentificarImagem()}" ajax="false" type="submit"  />
+            <p:commandButton value="Gravar Alterações da Imagem" action="#{RespostaControllerBanca.gravaDesidentificacao()}" ajax="false" type="submit" onclick="return confirm('Deseja gravar a desidentificação permanentemente?')"  />
+            <p:commandButton value="Corta Parte Menor Sup." action="#{RespostaControllerBanca.cortaPedacinhoSuperior()}" ajax="false" type="submit"  />
+            <p:commandButton value="Corta Parte Superior" action="#{RespostaControllerBanca.cortaParteSuperior()}" ajax="false" type="submit"  />
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <h:outputLabel value="Curso: #{RespostaControllerBanca.candidatoAtual.idCurso.nmCurso}"/>
+            <h:outputLabel value="Processo: #{RespostaControllerBanca.candidatoAtual.idProcesso.nmProcesso}"/>
+            <h:outputLabel value="Disciplina: #{RespostaControllerBanca.candidatoAtual.idDisciplina.nmDisciplina }"/>
+            <h:outputLabel value="Passou pelo corretor: #{RespostaControllerBanca.passouPeloCorretor.idColaborador.nrCpf.nmPessoa} "/>
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <h:outputLabel id="lblMensagemErro" styleClass="lblMensagemDestaque" value="#{RespostaControllerBanca.mensagem}" rendered="#{RespostaControllerBanca.exibirMensagem}" />        
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <p:graphicImage value="#{RespostaControllerBanca.imagemCandidatoAtual}" width="800px;" height="900px" id="imgConsultaResposta" />
+        </h:panelGrid>
+        <h:panelGrid columns="1">
+            <h:graphicImage name="linha.jpg" library="images" width="100%" />        
+        </h:panelGrid>
+    </p:panel>
+
+</h:panelGroup>

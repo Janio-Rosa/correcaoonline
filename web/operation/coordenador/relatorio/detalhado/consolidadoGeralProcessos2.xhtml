@@ -1,0 +1,23 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+     <h:panelGrid columns="2">
+        <h:outputLabel styleClass="lblBoldAzul" value="Selecionar Curso:"/>
+        <h:selectOneMenu value="#{RelatorioDetalhado.idProcessoRelConsGeral}" >
+            <f:ajax event="change" execute="@this" render="pnlDisciplinas" listener="#{RelatorioDetalhado.selecionouProcesso()}" />
+            <f:selectItems value="#{ProcessoSeletivo.listaProc}" var="procAtual" itemLabel="#{procAtual.nmProcesso}" itemValue="#{procAtual.idProcesso}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:panelGrid columns="2" id="pnlDisciplinas">
+        <h:outputLabel styleClass="lblBoldAzul" value="Selecionar Disciplina:"/>
+        <h:selectOneMenu value="#{RelatorioDetalhado.idDisciplinaRelConsGeral}" required="true">
+            <f:selectItems value="#{RelatorioDetalhado.listaVwConsGeral}" var="discAtual" itemLabel="#{discAtual.nmDisciplina}" itemValue="#{discAtual.idDisciplina.intValue()}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:panelGrid>
+        <h:commandButton value="OK" action="#{RelatorioDetalhado.encaminhaRelConsolidadoGeral2}"/>
+    </h:panelGrid>
+    
+</h:panelGroup>

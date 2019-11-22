@@ -1,0 +1,66 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Correção Consolidada:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+        <h:dataTable value="#{RelatorioDetalhado.gridCorrecaoConsolidada}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Disciplina:"/></f:facet>
+                <h:outputLabel styleClass="digita" />
+                <h:commandLink value="#{atual.nmDisciplina}" action="#{RelatorioDetalhado.geraRelatorioCorrecaoConsolidadoPorQuestao(atual.idDisciplina)}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Total de Provas:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtTotalRespostas}" title="Total de provas" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Primeira Correção:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtPrimeiraCorrecao}" title="Primeira Correção" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Concluído 1ª Correção:"/></f:facet>
+                <h:panelGrid columns="2">
+                    <h:outputLabel styleClass="lblBoldAzulMedio" value="#{atual.porcentagemPrimeiraCorrecao}" title="Andamento da primeira correção" >
+                        <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+                    </h:outputLabel>
+                    <h:outputLabel value="%" styleClass="lblBoldAzulMedio"/>
+                </h:panelGrid>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Segunda Correção:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtSegundaCorrecao}" title="Segunda Correção" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Concluído 2ª Correção:"/></f:facet>
+                <h:panelGrid columns="2">
+                    <h:outputLabel styleClass="lblBoldAzulMedio" value="#{atual.porcentagemSegundaCorrecao}" title="Andamento da segunda correção" >
+                        <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+                    </h:outputLabel>
+                    <h:outputLabel value="%" styleClass="lblBoldAzulMedio"/>
+                </h:panelGrid>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Discrepâncias:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtTotalDiscrepancias}" title="Total de discrepâncias"  />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Feitas:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtDiscrepancia}" title="Discrepâncias já feitas"  />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="%:" title="Andamento da correção de discrepâncias" /></f:facet>
+                <h:panelGrid columns="2">
+                    <h:outputLabel styleClass="lblBoldAzulMedio" value="#{atual.porcentagemDiscrepancia}" title="Andamento das discrepâncias" >
+                        <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+                    </h:outputLabel>
+                    <h:outputLabel value="%" styleClass="lblBoldAzulMedio"/>
+                </h:panelGrid>
+            </h:column>
+
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

@@ -1,0 +1,39 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" >
+    <h:panelGrid columns="1">
+        <h:outputLabel styleClass="lblBoldAzul" value="Processos Seletivos:"/>
+    </h:panelGrid>
+    <h:panelGrid columns="1">
+
+        <h:dataTable value="#{InscricaoController.gridInscricoes}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Selecione a inscrição: "/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nrInscricao}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="1ª Correção: "/></f:facet>
+                <h:outputLabel styleClass="digita" value="SIM" rendered="#{atual.flPrimeiraCorrecao}"/>
+                <h:outputLabel styleClass="digita" value="NÃO" rendered="#{!atual.flPrimeiraCorrecao}"/>
+                <h:graphicImage name="ok6.png" library="images" width="20" height="20" rendered="#{atual.flPrimeiraCorrecao}"/>
+                <h:graphicImage name="xis2.png" library="images"  width="20" height="15" rendered="#{!atual.flPrimeiraCorrecao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="2ª Correção: "/></f:facet>
+                <h:outputLabel styleClass="digita" value="SIM" rendered="#{atual.flSegundaCorrecao}"/>
+                <h:outputLabel styleClass="digita" value="NÃO" rendered="#{!atual.flSegundaCorrecao}"/>
+                <h:graphicImage name="ok6.png" library="images" width="20" height="20" rendered="#{atual.flSegundaCorrecao}"/>
+                <h:graphicImage name="xis2.png" library="images" width="20" height="15"  rendered="#{!atual.flSegundaCorrecao}"/>
+            </h:column>
+            
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Corrigir"/></f:facet>
+                <h:commandLink value="Avaliar" action="#{InscricaoController.prepararSelecaoInscricao()}"/>
+            </h:column>
+          
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>
+

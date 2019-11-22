@@ -1,0 +1,60 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+        <table border="0" cellpadding="0" cellspacing="2" width="80%" height="100%">
+            <tr><td colspan="2"><h:graphicImage name="linha.jpg" library="images" width="100%" /></td></tr>            
+
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Disciplina "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{DisciplinaDiscrepancia.idDisciplina}">
+                <f:selectItem itemLabel="--- Selecione uma disciplina ---" itemValue="0"/>
+                <f:selectItems value="#{Disciplina.listaDisciplinas}" var="disciplinaAt" itemValue="#{disciplinaAt.idDisciplina}" itemLabel="#{disciplinaAt.nmDisciplina}"/>
+            </h:selectOneMenu>
+                
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Questão: "/>
+            </td>
+            <td align="left">
+            <h:selectOneMenu  value="#{DisciplinaDiscrepancia.idQuestão}">
+                <f:selectItem itemLabel="--- Selecione uma questão ---" itemValue="0"/>
+                <f:selectItems value="#{QuestaoController.listaQuestoes}" var="questaoAt" itemValue="#{questaoAt.idQuestao}" itemLabel="#{questaoAt.nmQuestao}"/>
+            </h:selectOneMenu>
+                
+            </td>
+            </tr>
+            <tr class="borda">
+                <td class="borda" align="right">
+            <h:outputLabel value="Critério Negativo:"/>
+            </td>
+            <td align="left">
+            <h:selectBooleanCheckbox title="geral" value="#{DisciplinaDiscrepancia.novaDisciplinaDiscrepancia.flDiscrepanciaAtiva}"/> 
+            </td>
+            </tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr class="borda">
+            <td class="borda" colspan="2">
+            <h:commandButton styleClass="botaoLegal" action="#{DisciplinaDiscrepancia.gravaAlteracao()}" value="Inserir"/>
+            </td>
+            </tr>
+            <tr><td></td></tr>
+            <tr><td></td></tr>
+            <tr>
+                <td colspan="2">
+            <h:outputLabel id="lblMensagemErro" styleClass="lblMensagemDestaque" value="#{DisciplinaDiscrepancia.mensagem}" rendered="#{DisciplinaDiscrepancia.exibirMensagem}" />
+            </td>
+            </tr>
+            <tr><td colspan="2"><h:graphicImage name="linha.jpg" library="images" width="100%" /></td></tr>            
+        </table>
+
+    
+</h:panelGroup>

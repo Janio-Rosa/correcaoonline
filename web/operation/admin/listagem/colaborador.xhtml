@@ -1,0 +1,99 @@
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:f="http://java.sun.com/jsf/core" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+    <!--p:ajax event="change" listener="{Colaborador.selecionouProcesso}" update="pnlListaColaboradores" /-->
+    <h:panelGrid columns="2">
+        <h:outputLabel styleClass="lblBoldAzul" value="Filtrar por Pessoa:"/>
+        <h:selectOneMenu value="#{Colaborador.nrCpfFiltro}" >
+            <f:ajax event="change"  execute="@this" render="pnlListaColaboradores tblDadosColaboradores" listener="#{Colaborador.selecionouColaborador}" />
+            <f:selectItem itemValue="" itemLabel="------ TODOS ------" />
+            <f:selectItems value="#{Pessoa.listaPessoas}" var="pessoaAtual" itemLabel="#{pessoaAtual.nmPessoa} / #{pessoaAtual.nrCpf}" itemValue="#{pessoaAtual.nrCpf}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <h:outputLabel styleClass="lblBoldAzul" value="Filtrar por Curso:"/>
+        <h:selectOneMenu value="#{Colaborador.idCursoFiltro}" >
+            <f:ajax event="change" execute="@this" render="pnlListaColaboradores tblDadosColaboradores" listener="#{Colaborador.selecionouCurso}" />
+            <f:selectItem itemValue="-1" itemLabel="------ TODOS ------" />
+            <f:selectItems value="#{Curso.listaCursos}" var="cursoAtual" itemLabel="#{cursoAtual.nmCurso}" itemValue="#{cursoAtual.idCurso.intValue()}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <h:outputLabel styleClass="lblBoldAzul" value="Filtrar por processo:"/>
+        <h:selectOneMenu value="#{Colaborador.idProcessoFiltro}" >
+            <f:ajax event="change" execute="@this" render="pnlListaColaboradores tblDadosColaboradores" listener="#{Colaborador.selecionouProcesso}" />
+            <f:selectItem itemValue="0" itemLabel="------ TODOS ------" />
+            <f:selectItems value="#{Colaborador.listaProcessos}" var="procAtual" itemLabel="#{procAtual.nmProcesso}" itemValue="#{procAtual.idProcesso.intValue()}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:panelGrid columns="2">
+        <h:outputLabel styleClass="lblBoldAzul" value="Filtrar por disciplina:"/>
+        <h:selectOneMenu value="#{Colaborador.idDisciplinaFiltro}" >
+            <f:ajax event="change" execute="@this" render="pnlListaColaboradores tblDadosColaboradores" listener="#{Colaborador.selecionouDisciplina}" />
+            <f:selectItem itemValue="0" itemLabel="------ TODAS ------" />
+            <f:selectItems value="#{Disciplina.listaDisciplinas}" var="discAtual" itemLabel="#{discAtual.nmDisciplina}" itemValue="#{discAtual.idDisciplina}"/>
+        </h:selectOneMenu>
+    </h:panelGrid>
+    <h:panelGrid columns="1" id="pnlListaColaboradores" >
+        <h:panelGrid columns="1" rendered="#{Colaborador.bolExistemColaboradoresCadastrados}">
+            <h:outputLabel styleClass="lblBoldAzul" value="Colaboradores Cadastrados:"/>
+        </h:panelGrid>
+        <h:panelGrid columns="1" >
+            <h:outputLabel id="lblMensagemAviso" styleClass="lblBoldVermelho" value="#{Colaborador.mensagem}"  />
+        </h:panelGrid>
+        <h:dataTable id="tblDadosColaboradores" value="#{Colaborador.gridColaboradores}" var="atual" border="0" cellpadding="10" cellspacing="10" rowClasses="linhasimpares, linhaspares" headerClass="TituloTabelaVariavel" columnClasses="TituloTabela1"  >
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Colaborador"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmPessoa}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Processo"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmProcesso}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Banca"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmBanca}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Função"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmFuncao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Tipo de Correção"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmTipoCorrecao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Número da Questão"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.nmQuestao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Pendentes:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtResposta}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Feitas:"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{atual.qtCorrecoes}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel  value="Número da Questão"/></f:facet>
+                <h:outputLabel styleClass="digita" value="#{(atual.qtCorrecoes / atual.qtResposta)*100}">
+                    <f:convertNumber maxFractionDigits="2" pattern="#0.00"/>
+                </h:outputLabel>
+                <h:outputLabel styleClass="digita" value="%"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Alterar "/></f:facet>
+                <h:commandLink value="Alterar" action="#{Colaborador.prepararAlterar()}" rendered="#{Usuario.possuiPerfilAdministrador}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputLabel value="Ativado?"/></f:facet>
+                <h:selectBooleanCheckbox title="Ativar/Desativar" value="#{atual.flAtivo}">
+                    <f:ajax listener="#{Colaborador.ativaDesativaColaborador()}" event="click" execute="@this" />
+                </h:selectBooleanCheckbox>
+
+            </h:column>
+        </h:dataTable>
+    </h:panelGrid>
+</h:panelGroup>

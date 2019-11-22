@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<h:panelGroup xmlns="http://www.w3.org/1999/xhtml"
+              xmlns:h="http://java.sun.com/jsf/html"
+              xmlns:ui="http://java.sun.com/jsf/facelets" 
+              xmlns:p="http://primefaces.prime.com.tr/ui">
+    <!--p:imageCropper image="/resources/digitalizacoes/modelo.jpg"  /-->
+    <!--width="800px;" height="800px"-->
+
+    <!--h:graphicImage library="digitalizacoes" name="692C77_recortada.jpg" width="800px;" height="900px"/-->
+    <h:panelGroup rendered="#{CorrecaoController.bolRespostaEncontrada}" id="pnlImagemCorrecaoDiscursiva" >
+        <p:panel>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="Inscrição:"/>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="#{CorrecaoController.inscricaoCandidatoAtual.nrInscricao}"/>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="Ordem:"/>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="#{CorrecaoController.inscricaoCandidatoAtual.nrOrdem}"/>
+        </p:panel>
+        <p:panel>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="Curso:"/>
+            <h:outputLabel styleClass="lblBoldAzulMedio" value="#{CorrecaoController.candidatoAtual.idCurso.nmCurso}"/>
+        </p:panel>
+        <p:panel id="pnlNotaPorQuestao">
+            <ui:repeat value="#{CorrecaoController.listaRespostasQuestoes}" var="respostaAtual" >
+                <br/>
+                <h:panelGroup >
+                    <h:outputLabel styleClass="lblBoldAzulCriterio" value="Questão: #{respostaAtual.nrQuestao} - Nota: #{respostaAtual.notaConvertida}"/>
+                </h:panelGroup>
+            </ui:repeat>
+        </p:panel>
+        
+        <h:panelGrid columns="2">
+            <h:panelGroup>
+                <h:outputLabel value=" Questão 1: #{CorrecaoController.dadosQuestao1.notaConvertida} pontos" styleClass="lblBoldVermelhoMedio" id="lblInformacaoQuestao1"  /><br/>
+                <p:graphicImage width="1600px;" height="1000px"  value="#{CorrecaoController.imagemQuestao1}" id="imgCorrecaoHEQuestao1" rendered="#{CorrecaoController.imagemQuestao1 != null}" /><br/>
+            </h:panelGroup>
+            <h:panelGroup >
+                <div style="overflow: auto; border: 1px solid blue; ">
+                    <h:panelGrid columns="1" styleClass="alinhaForm" columnClasses="correcaoRed1, correcaoRed2" >
+                        <ui:repeat value="#{CriterioController.listaCriteriosQ1}" var="criterioatual" >
+                            <div align="left">
+                                <h:outputText  value="#{criterioatual.dsCriterio} " rendered="#{!criterioatual.existeCorrecaoCriterio}" escape="false"/>
+                                <h:outputText styleClass="lblBoldVerdeCriterio" value="#{criterioatual.dsCriterio} " rendered="#{criterioatual.existeCorrecaoCriterio}" escape="false" />
+                            </div>
+                            <h:panelGroup rendered="#{criterioatual.existeCorrecaoCriterio}">
+                                <h:outputLabel styleClass="lblBoldVerdeCriterio" value="Máximo: #{criterioatual.nrValorMaximo} " rendered="#{criterioatual.existeCorrecaoCriterio}"/>
+                                <h:outputLabel styleClass="lblBoldCriterioNotaDada" value="Nota dada: #{criterioatual.nrValor}" rendered="#{criterioatual.existeCorrecaoCriterio}"/>
+                            </h:panelGroup>
+                            <h:outputLabel styleClass="lblBoldAzulCriterio" value="Máximo: #{criterioatual.nrValorMaximo} " rendered="#{!criterioatual.existeCorrecaoCriterio}"/>
+                            <p:inputText value="#{CorrecaoController.correcaoCriterioAtual.notaDigitada}" onclick="this.select();"  >
+                                <p:ajax event="blur" listener="#{CorrecaoController.corrigeCriterio(CorrecaoController.dadosQuestao1.idResposta,criterioatual.idCriterio,criterioatual.nmCriterio)}" update="pnlPontuacaoParcial pnlPontuacaoRodape lblInformacaoQuestao1 pnlNotaPorQuestao" />
+                            </p:inputText>
+                            <hr/>
+                        </ui:repeat>
+                    </h:panelGrid>
+                </div>          
+            </h:panelGroup>
+        </h:panelGrid>
+        <h:panelGrid columns="2">
+            <h:panelGroup>
+                <h:outputLabel value=" Questão 2: #{CorrecaoController.dadosQuestao2.notaConvertida} pontos" styleClass="lblBoldVermelhoMedio" id="lblInformacaoQuestao2"  /><br/>
+                <p:graphicImage width="1600px;" height="1000px"  value="#{CorrecaoController.imagemQuestao2}" id="imgCorrecaoHEQuestao2" rendered="#{CorrecaoController.imagemQuestao2 != null}" /><br/>
+            </h:panelGroup>
+            <h:panelGroup>
+                <div style="overflow: auto; border: 1px solid blue;  ">
+                    <h:panelGrid columns="1" styleClass="alinhaForm" columnClasses="correcaoRed1, correcaoRed2" border="1" >
+                        <ui:repeat value="#{CriterioController.listaCriteriosQ2}" var="criterioatual" >
+                            <div align="left">
+                                <h:outputText  value="#{criterioatual.dsCriterio} " rendered="#{!criterioatual.existeCorrecaoCriterio}" escape="false"/>
+                                <h:outputText styleClass="lblBoldVerdeCriterio" value="#{criterioatual.dsCriterio} " rendered="#{criterioatual.existeCorrecaoCriterio}" escape="false" />
+                            </div>
+                            <h:panelGroup rendered="#{criterioatual.existeCorrecaoCriterio}">
+                                <h:outputLabel styleClass="lblBoldVerdeCriterio" value="Máximo: #{criterioatual.nrValorMaximo} " rendered="#{criterioatual.existeCorrecaoCriterio}"/>
+                                <h:outputLabel styleClass="lblBoldCriterioNotaDada" value="Nota dada: #{criterioatual.nrValor}" rendered="#{criterioatual.existeCorrecaoCriterio}"/>
+                            </h:panelGroup>
+                            <h:outputLabel styleClass="lblBoldAzulCriterio" value="Máximo: #{criterioatual.nrValorMaximo} " rendered="#{!criterioatual.existeCorrecaoCriterio}"/>
+                            <p:inputText value="#{CorrecaoController.correcaoCriterioAtual.notaDigitada}" onclick="this.select();"  >
+                                <p:ajax event="blur" listener="#{CorrecaoController.corrigeCriterio(CorrecaoController.dadosQuestao2.idResposta,criterioatual.idCriterio,criterioatual.nmCriterio)}" update="pnlPontuacaoParcial pnlPontuacaoRodape lblInformacaoQuestao2 pnlNotaPorQuestao" />
+                            </p:inputText>
+                            <hr/>
+                        </ui:repeat>
+                    </h:panelGrid>
+                </div>          
+            </h:panelGroup>
+        </h:panelGrid>
+
+        <h:panelGrid columns="2">
+            <h:panelGroup>
+                <h:outputLabel value=" Questão 3: #{CorrecaoController.dadosQuestao3.notaConvertida} pontos" styleClass="lblBoldVermelhoMedio" id="lblInformacaoQuestao3"  /><br/>
+                <p:graphicImage width="1600px;" height="1000px"  value="#{CorrecaoController.imagemQuestao3}" id="imgCorrecaoHEQuestao3" rendered="#{CorrecaoController.imagemQuestao3 != null}"/><br/>
+            </h:panelGroup>
+            <h:panelGroup>
+                <div style="overflow: auto; border: 1px solid blue;  ">
+                    <h:panelGrid columns="1" styleClass="alinhaForm" columnClasses="correcaoRed1, correcaoRed2" border="1" >
+                        <ui:repeat value="#{CriterioController.listaCriteriosQ3}" var="criterioatual" >
+                            <div align="left">
+                                <h:outputText  value="#{criterioatual.dsCriterio} " rendered="#{!criterioatual.existeCorrecaoCriterio}" escape="false"/>
+                                <h:outputText styleClass="lblBoldVerdeCriterio" value="#{criterioatual.dsCriterio} " rendered="#{criterioatual.existeCorrecaoCriterio}" escape="false" />
+                            </div>
+                            <h:panelGroup rendered="#{criterioatual.existeCorrecaoCriterio}">
+                                <h:outputLabel styleClass="lblBoldVerdeCriterio" value="Máximo: #{criterioatual.nrValorMaximo} " rendered="#{criterioatual.existeCorrecaoCriterio}"/>
+                                <h:outputLabel styleClass="lblBoldCriterioNotaDada" value="Nota dada: #{criterioatual.nrValor}" rendered="#{criterioatual.existeCorrecaoCriterio}"/>
+                            </h:panelGroup>
+                            <h:outputLabel styleClass="lblBoldAzulCriterio" value="Máximo: #{criterioatual.nrValorMaximo} " rendered="#{!criterioatual.existeCorrecaoCriterio}"/>
+                            <p:inputText value="#{CorrecaoController.correcaoCriterioAtual.notaDigitada}" onclick="this.select();"  >
+                                <p:ajax event="blur" listener="#{CorrecaoController.corrigeCriterio(CorrecaoController.dadosQuestao3.idResposta,criterioatual.idCriterio,criterioatual.nmCriterio)}" update="pnlPontuacaoParcial pnlPontuacaoRodape lblInformacaoQuestao3 pnlNotaPorQuestao" />
+                            </p:inputText>
+                            <hr/>
+                        </ui:repeat>
+                    </h:panelGrid>
+                </div>          
+            </h:panelGroup>
+        </h:panelGrid>
+
+        <h:panelGrid columns="2">
+            <h:panelGroup>
+                <h:outputLabel value="Questão 4: #{CorrecaoController.dadosQuestao4.notaConvertida} pontos " styleClass="lblBoldVermelhoMedio" id="lblInformacaoQuestao4"/><br/>
+                <p:graphicImage width="1000px;" height="1000px" value="#{CorrecaoController.imagemQuestao4}" id="imgCorrecaoHEQuestao4" rendered="#{CorrecaoController.imagemQuestao4 != null}" />
+            </h:panelGroup>
+            <h:panelGroup>
+                <div style="overflow: auto; border: 1px solid blue;  ">
+                    <h:panelGrid columns="1" styleClass="alinhaForm" columnClasses="correcaoRed1, correcaoRed2" border="1" >
+                        <ui:repeat value="#{CriterioController.listaCriteriosQ4}" var="criterioatual" >
+                            <div align="left">
+                                <h:outputText  value="#{criterioatual.dsCriterio} " rendered="#{!criterioatual.existeCorrecaoCriterio}" escape="false"/>
+                                <h:outputText styleClass="lblBoldVerdeCriterio" value="#{criterioatual.dsCriterio} " rendered="#{criterioatual.existeCorrecaoCriterio}" escape="false" />
+                            </div>
+                            <h:panelGroup rendered="#{criterioatual.existeCorrecaoCriterio}">
+                                <h:outputLabel styleClass="lblBoldVerdeCriterio" value="Máximo: #{criterioatual.nrValorMaximo} " rendered="#{criterioatual.existeCorrecaoCriterio}"/>
+                                <h:outputLabel styleClass="lblBoldCriterioNotaDada" value="Nota dada: #{criterioatual.nrValor}" rendered="#{criterioatual.existeCorrecaoCriterio}"/>
+                            </h:panelGroup>
+                            <h:outputLabel styleClass="lblBoldAzulCriterio" value="Máximo: #{criterioatual.nrValorMaximo} " rendered="#{!criterioatual.existeCorrecaoCriterio}"/>
+                            <p:inputText value="#{CorrecaoController.correcaoCriterioAtual.notaDigitada}" onclick="this.select();"  >
+                                <p:ajax event="blur" listener="#{CorrecaoController.corrigeCriterio(CorrecaoController.dadosQuestao4.idResposta,criterioatual.idCriterio,criterioatual.nmCriterio)}" update="pnlPontuacaoParcial pnlPontuacaoRodape lblInformacaoQuestao4 pnlNotaPorQuestao" />
+                            </p:inputText>
+                            <hr/>
+                        </ui:repeat>
+                    </h:panelGrid>
+                </div>
+            </h:panelGroup>
+        </h:panelGrid>
+    </h:panelGroup>
+
+</h:panelGroup>
